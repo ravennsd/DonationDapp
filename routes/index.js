@@ -1,44 +1,84 @@
 var express = require('express');
 var router = express.Router();
+const store = require('store2');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+/* authentication for loading the pages */
+function authentiction() { //////////////////////////////////////
+  return !!localStorage.getItem('token');
+}
+
+/* GET welcome route. */
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Donation-Dapp' });
 });
 
-router.get('/view', function(req, res, next) {
-  data = {"courseName" : "<Course Name>", "certificateID" : "<Certificated ID>", "candidateName" : "<Candidate Name>", "grade" : "<Grade>", "date" : "<Date>"}
-  res.render('viewCertificate', {data: data});
+// GET signIn route
+router.get('/signIn', function (req, res, next) {
+  res.render('signIn', { title: 'Donation-Dapp' });
 });
 
-router.get('/issue', function(req, res, next) {
-  res.render('issueCertificate', {formClass : '', messageClass : 'hidden', certificateID : '<Certificated ID>'});
+// GET signUp route
+router.get('/signUp', function (req, res, next) {
+  res.render('signUp', { title: 'Donation-Dapp' });
 });
 
-router.post('/issue', function(req, res, next) {
-  data = req.body;
-  console.log(data);
-
-  MyContract.methods.newCertificate(data.certificateID, data.courseName, data.candidateName, data.grade, data.date)
-  .send({from : accountAddress, gasLimit : "927000"}).then((txn) => {
-    // res.send(txn);
-    res.render('issueCertificate', {formClass : 'hidden', messageClass : '', certificateID : data.certificateID})
-  })
-
+// GET signOut route
+router.get('/signOut', function (req, res, next) {
+  store.clear();
+  res.render('index', { title: 'Donation-Dapp' });
 });
 
-router.post('/view', function(req, res, next) {
-  data = req.body;
-  console.log(data);
-  // res.send(data)
-  MyContract.methods.certificateDetails(data.certificateID)
-    .call({from:accountAddress})
-    .then((result) => {
-        console.log(result);
-        result.certificateID = data.certificateID;
-        res.render('viewCertificate', {data : result});
-    })
+/* GET home route. */
+router.get('/home', function (req, res, next) {
+  res.render('home', { title: 'Donation-Dapp' });
 });
 
+/* GET new patient route. */
+router.get('/new', function (req, res, next) {
+  res.render('new', { title: 'Donation-Dapp' });
+});
+
+/* GET revist patient route. */
+router.get('/revisit', function (req, res, next) {
+  res.render('revisit', { title: 'Donation-Dapp' });
+});
+
+/* GET user route. */
+router.get('/user', function (req, res, next) {
+  const user = store.getAll().user;
+  const name = user.fname + " " + user.lname;
+  const phone = user.phone;
+  const email = user.email;
+  res.render('user', {
+    title: 'Donation-Dapp',
+    name: name,
+    phone: phone,
+    email: email
+  });
+});
+
+/* GET dashboard route. */
+router.get('/dashboard', function (req, res, next) {
+  res.render('dashboard', { title: 'Donation-Dapp' });
+});
+
+/* GET verify patient route. */
+router.get('/DonationPatientData', function (req, res, next) {
+  res.render('DonationPatient', { title: 'Donation-Dapp' });
+});
+
+/* GET DonationRecord route. */
+router.get('/DonationRecord', function (req, res, next) {
+  res.render('DonationRecord', { title: 'Donation-Dapp' });
+});
+/* GET DonationRecord route. */
+router.get('/verifyDonationRecord', function (req, res, next) {
+  res.render('verifyDonation', { title: 'Donation-Dapp' });
+});
+
+/* GET DonationRecords route. */
+router.get('/previousDRs', function (req, res, next) {
+  res.render('previousDRs', { title: 'Donation-Dapp' });
+});
 
 module.exports = router;
