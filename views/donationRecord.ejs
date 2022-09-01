@@ -169,37 +169,46 @@
         <h1 class="text-center text-uppercase mb-3">Current Donation Record</h1>
         <div class="row g-3 DonationRecord">
           <div class="col-md-8 position-relative">
-            <label for="vname" class="me-2 fw-bold">Donor Name:</label>
-            <label for="vnameFromDB"><%= dRecord.DonorName%></label>
+            <label for="name" class="me-2 fw-bold">Donor Name:</label>
+            <label for="nameFromDB" id="nameFromDB"><%= dRecord.name%></label>
           </div>
+             <!-- <div class="col-md-8 position-relative">
+            <label for="dData" class="me-2 fw-bold">Donor Details:</label>
+            <label for="dDataFromDB" id="dDataFromDB"><%= dRecord.dData%></label>
+             </div>  -->
+          
           <div class="col-md-4 position-relative">
             <label for="uid" class="me-2 fw-bold">Unique ID:</label>
             <label for="uidFromDB" id="uidfromDB"><%= dRecord.uid%></label>
           </div>
           <div class="col-md-4 position-relative">
-            <label for="manufacturer" class="me-2 fw-bold">Hospital:</label>
-            <label for="manufacturerFromDB" id="manufacturerfromDB"
+            <label for="hospital" class="me-2 fw-bold">Hospital:</label>
+            <label for="hospitalFromDB" id="hospitalfromDB"
               ><%= dRecord.hospital%></label
             >
           </div>
           <div class="col-md-4 position-relative">
-            <label for="batch" class="me-2 fw-bold">Doctor:</label>
-            <label for="batchFromDB" id="batchfromDB"
-              ><%= dRecord.doc%></label
+            <label for="doctor" class="me-2 fw-bold">Doctor:</label>
+            <label for="doctorFromDB" id="doctorfromDB"
+              ><%= dRecord.doctor%></label
             >
           </div>
-          <div class="col-md-4 position-relative">
+          <div class="col-md-4 position-relative"> 
             <label for="slno" class="me-2 fw-bold">SlNo:</label>
             <label for="slnoFromDB" id="slnofromDB"><%= dRecord.slNo%></label>
           </div>
+          <!-- <div class="col-md-6 position-relative">
+            <label for="doctor class="me-2 fw-bold">Hospital:</label>
+            <label for="doctorFromDB" id="hosfromDB"><%= dRecord.hospital%></label>
+          </div> -->
           <div class="col-md-6 position-relative">
-            <label for="hos" class="me-2 fw-bold">Hospital:</label>
-            <label for="hosFromDB" id="hosfromDB"><%= dRecord.hos%></label>
+            <label for="date" class="me-2 fw-bold">Date Added:</label>
+            <label for="dateFromDB" id="datefromDB"><%= dRecord.date%></label>
           </div>
-          <div class="col-md-6 position-relative">
-            <label for="doc" class="me-2 fw-bold">Record Added:</label>
-            <label for="docFromDB" id="mfdfromDB"><%= dRecord.doc%></label>
-          </div>
+          <!-- <div class="col-md-6 position-relative">
+            <label for="date" class="me-2 fw-bold">Record Added:</label>
+            <label for="dateFromDB" id="datefromDB"><%= dRecord.Ddate%></label>
+          </div> -->
         </div>
       </section>
       <hr />

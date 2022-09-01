@@ -4,6 +4,8 @@ module.exports.sendTransaction = function (
 ) {
   const encodedABI = functionCall.encodeABI();
   //Transaction object creation
+  // web3 = rnew Web3(provider);
+ 
   web3.eth.getGasPrice()
     .then(gPrice => {
       web3.eth.getAccounts().then(accounts => {

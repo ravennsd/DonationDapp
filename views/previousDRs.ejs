@@ -168,13 +168,13 @@
       <section class="donationRecords px-5 py-3">
         <h1 class="text-center text-uppercase mb-3">Previous Donation Record</h1>
 
-        <% for (i=0; i< vRecords.length; i++){%>
+        <% for (i=0; i< d=dRecords.length; i++){%>
           <% count= i+1 %>
         <div class="row g-3 mb-2 donationRecord">
           <label for="Count" class="fw-bold text-danger">Donation Count: <%=count%></label>
           <div class="col-md-8 position-relative">
             <label for="vname" class="me-2 fw-bold">Donation Name:</label>
-            <label for="DataFromBC"><%= dRecords[i].donationName%></label>
+            <label for="DataFromBC"><%= dRecord[i].name%></label>
           </div>
 
           <div class="col-md-4 position-relative">
@@ -183,27 +183,27 @@
           </div>
 
           <div class="col-md-4 position-relative">
-            <label for="manufacturer" class="me-2 fw-bold">Hospital:</label>
-            <label for="DataFromBC"><%= dRecords[i].manufacturer%></label>
+            <label for="hospital" class="me-2 fw-bold">Hospital:</label>
+            <label for="DataFromBC"><%= dRecord[i].hospital%></label>
           </div>
 
           <div class="col-md-4 position-relative">
-            <label for="batch" class="me-2 fw-bold">Doctor:</label>
-            <label for="DataFromBC"><%= dRecords[i].doc%></label>
+            r<label for="doctor" class="me-2 fw-bold">Doctor:</label>
+            <label for="DataFromBC"><%= dRecord[i].doctor%></label>
           </div>
 
           <div class="col-md-4 position-relative">
             <label for="slno" class="me-2 fw-bold">SlNo:</label>
-            <label for="DataFromBC"><%= dRecords[i].slNo%></label>
+            <label for="DataFromBC"><%= dRecord[i].slNo%></label>
           </div>
 
           <div class="col-md-6 position-relative">
-            <label for="mfd" class="me-2 fw-bold">Date:</label>
-            <label for="DataFromBC"><%= drecords[i].date%></label>
+            <label for="date" class="me-2 fw-bold">Date:</label>
+            <label for="DataFromBC"><%= drecord[i].date%></label>
           </div>
 
           <div class="col-md-6 position-relative">
-            <label for="mfd" class="me-2 fw-bold">Record Added:</label>
+            <label for="record" class="me-2 fw-bold">Record Added:</label>
             <label for="DataFromBC"><%= dRecords[i].recordAdded%></label>
           </div>
         </div>

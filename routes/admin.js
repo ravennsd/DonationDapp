@@ -1,6 +1,6 @@
 const express = require('express');
 const adminRouter = express.Router();
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 const Admin = require('../model/adminData');
 
 adminRouter.post('/login', (req, res) => {

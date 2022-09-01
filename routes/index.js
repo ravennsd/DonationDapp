@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 const store = require('store2');
+const mongoose = require('mongoose');
+
+mongoose.connect("mongodb+srv://Neethu01:Mongo0101@cluster0.i933t.mongodb.net/?retryWrites=true&w=majority");
 
 /* authentication for loading the pages */
 function authentiction() { //////////////////////////////////////
@@ -46,6 +49,8 @@ router.get('/revisit', function (req, res, next) {
 /* GET user route. */
 router.get('/user', function (req, res, next) {
   const user = store.getAll().user;
+  data = req.body;
+  console.log(body);
   const name = user.fname + " " + user.lname;
   const phone = user.phone;
   const email = user.email;
@@ -56,6 +61,8 @@ router.get('/user', function (req, res, next) {
     email: email
   });
 });
+
+
 
 /* GET dashboard route. */
 router.get('/dashboard', function (req, res, next) {

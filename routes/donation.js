@@ -1,7 +1,7 @@
 var express = require('express');
 const DonationRouter = express.Router();
-const DonationData = require('../model/donationData');
-const DonationBCTxn = require("./donationBCTxn");
+const DonationData = require('../model/donationData.js');
+// const DonationBCTxn = require("./donationBCTxn");
 
 /* POST Donation details. */
 DonationRouter.post('/get', function (req, res, next) {
@@ -10,12 +10,12 @@ DonationRouter.post('/get', function (req, res, next) {
     if (err) {
       console.log(err)
     } else {
-      if (!DonationRecords) {
+      if (!donationRecords) {
         res.status(404).send("Record Not Found");
       }
       else {
-        console.log(Donationecords);
-        res.status(200).render('previousVRs', { vRecords: DonationRecords });
+        console.log("Donation is" +Donationecords);
+        res.status(200).render('previousDRs', { dRecords: DonationRecords });
         // .catch(_err => {
         //   res.status(400).send("Unable to Read the Database");
         // });
@@ -27,29 +27,34 @@ DonationRouter.post('/get', function (req, res, next) {
 /* POST add Donation. */
 DonationRouter.post('/add', function (req, res, next) {
   data = req.body;
-  console.log(data);
-  const recordData = {
+  console.log("data is", data);
+  const name = data.donorName;
+  const dData = {
     uid: data.uid,
-    donationName: data.donationName,
-    manufacturer: data.manufacturer,
-    batch: data.batch,
+    name: data.name,
+    hospital: data.hospital,
+    doctor: data.doctor,
     slNo: data.slNo,
-    mfd: data.mfd
+    date: data.dDate
   }
 
-  const dData = data.donationName + '-' + data.hospital + '-' + data.doctor + '-' + data.slNo + '-' + data.date; // all the datas are joined together to form a unique data
+ //const dData = {dData: data.name + ', ' + data.hospital + ', ' + data.doctor + ', ' + data.slNo + ', ' + data.Ddate} // all the datas are joined together to form a unique data
 
-  record = new Donationata(recordData);
-  record.save((err, record) => {
+  record = new DonationData(dData);
+  record.save((err, DonationRecord) => {
 
-    web3.eth.getAccounts().then((accounts) => {
-      DonationContract.methods
-        .setDonationData(data.uid, dData)
-        .send({ from: accounts[0], gas: 257685 })
-        .then((txn) => {
+    // web3.eth.getAccounts().then((accounts) => {
+      DonationContract.methods.setDonationData(data.uid, name, data.hospital, data.doctor, data.slNo, data.date)
+        .send({ from: accountAddress, gasLimit: 927000 }).then((txn) => {
           console.log(txn);
+          if (err) {
+            console.log(err);
+          } else {
+            console.log("donation record is" +DonationRecord);
+            res.status(200).render('donationRecord',{dRecord: DonationRecord});
+          }
         })
-    })
+  });
 
     // // Infura Txn call
     // const functionCall = DonationContract.methods
@@ -60,32 +65,51 @@ DonationRouter.post('/add', function (req, res, next) {
     // });
 
 
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(record);
-      // res.status(200).send(record);
-      res.status(200).render('DonationRecord', { dRecord: record });
-    }
-  });
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log(record);
+  //     // res.status(200).send(record);
+  //     res.status(200).render('DonationRecord', { dRecord: record });
+  //   }
+  // });
 
 });
 
 /* POST verify Donation */
 DonationRouter.post('/verify', function (req, res, next) {
   const data = req.body;
+  console.log("Verified donation is", data)
   const uid = data.uid;
   const count = data.donationCount;
-  web3.eth.getAccounts().then((accounts) => {
-    DonationContract.methods
-      .getData(uid, count)
-      .call({ from: accounts[0], gas: 257685 })
+ 
+    DonationContract.methods.getData(uid, count)
+      .call({ from: accountAddress, gasLimit: 507685 })
       .then((txn) => {
+        console.log("txn is", txn);
+        console.log(uid);
+        
+         DonationData.find({ uid: data.uid }, (err, donationRecords) => {
+         
+        console.log(txn);
         // res.status(200).send(txn);
-        res.status(200).render("verifyDonation", { VVD: txn });
-      })
+
+        if (err) {
+          console.log(err)
+        } else {
+          if (!(donationRecords)) {
+            res.status(404).send("Record Not Found");
+            console.log("Record Not Found");
+          }
+          else {
+            console.log(txn); console.log(donationRecords)
+        res.status(200).render("verifyDonation", { DVD: txn });
+         }
+       }
   })
 });
+});
+
 
 module.exports = DonationRouter;
 

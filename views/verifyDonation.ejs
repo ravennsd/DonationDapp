@@ -168,11 +168,44 @@
       <section class="verifiedVData px-5 py-3">
         <h1 class="text-center text-uppercase mb-3">Verified Donation Data</h1>
         <div class="row g-3 patientData">
-          <div class="col-md-12 position-relative">
+          <!-- <div class="col-md-12 position-relative">
             <label for="Data" class="me-2">Donation Data:</label>
-            <label for="DataFromBC"><%= VVD%></label>
+            <label for="DataFromBC"><%= DVD[0]%></label>
+          </div>
+          <div class="col-md-3 position-relative">
+            <label for="uid" class="me-2 fw-bold">Unique ID:</label>
+            <label for="uidFromBlockchain"><%= DVD[1]%></label>
+          </div>
+          
+        </div> -->
+        
+        <div class="row g-3 verifiedDonationData">
+          <div class="col-md-3 position-relative">
+            <label for="uid" class="me-2 fw-bold">Unique ID:</label>
+            <label for="uidFromBlockchain"><%= DVD[0]%></label>
+          </div>
+          <div class="col-md-6 position-relative">
+            <label for="name" class="me-2 fw-bold">Name:</label>
+            <label for="nameFromBlockchain"><%= DVD[1]%></label>
+          </div>
+          <div class="col-md-3 position-relative">
+            <label for="age" class="me-2 fw-bold">Hospital:</label>
+            <label for="hospitalFromBlockchain"><%= DVD[2]%></label>
+          </div>
+          <div class="col-md-3 position-relative">
+            <label for="gender" class="me-2 fw-bold">Doctor:</label>
+            <label for="doctorFromBlockchain"><%= DVD[3]%></label>
+          </div>
+          <div class="col-md-9 position-relative">
+            <label for="slNo" class="me-2 fw-bold">slNO:</label>
+            <label for="slNoFromBlockchain"><%= DVD[4]%></label>
+          </div>
+          <div class="col-md-9 position-relative">
+            <label for="date" class="me-2 fw-bold">Date:</label>
+            <label for="dateFromBlockchain"><%= DVD[4]%></label>
           </div>
         </div>
+        
       </section>
       <hr />
 

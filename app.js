@@ -3,35 +3,39 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const dotenv = require('dotenv').config();
+//const dotenv = require('dotenv').config();
 
-const DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+
 Web3 = require("web3");
-//var indexRouter = require('./routes/index');
+
 
 // web3 path
 
-accountAddress = "0xCc7477D5387F96B95cD3CEB5bA3582c0FE097Ead";
-const web3 = new Web3('http://localhost:8545');
-//const web3= new Web3(window.web3.currentProvider);
-const contractAddress = DonationJSON.networks['5777'].address;
-const contractAbi = DonationJSON.abi;
 
-const Donation = new web3.eth.Contract(contractAbi, contractAddress);
+//const web3 = new Web3('http://localhost:8545');
+//const web3= new Web3(window.web3.currentProvider);
+//const contractAddress = DonationJSON.networks['5777'].address;
+//Donation = new web3.eth.Contract(contractAbi, contractAddress);
 
 
 // // Infura configuration
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-// const infuraKey = "19634170f79a4486b23a666f351ac38f";
-// const mnemonic = "fresh cost return patrol kid tool canvas aim once snack owner fame";
-// const address_index = 0;
-// const num_addresses = 5;
-// const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/${infuraKey}`, address_index, num_addresses);
-// web3 = new Web3(provider);
-// const DonationJSON = require(path.join(__dirname, 'build/contracts/donation.json'));
-// contractAddress = donationJSON.networks['3'].address;
-// const contractAbi = DonationJSON.abi;
-// DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+//const infuraKey = "a89a3b1fa58841ae817fdd4944b78df6";
+const mnemonic = "interest later goose elite unusual galaxy claw display balance response angry beach";
+const addressIndex = 0;
+const numberofAddresses = 1;
+const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`, addressIndex, numberofAddresses);
+//const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`, addressIndex, numberofAddresses);
+
+var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+web3 = new Web3(provider);
+
+//accountAddress = "0x6b3016683BC99E6f57402418c64dc5073c8b4B23";
+accountAddress= "0x958c266da218BADd303d6f6b91f4d67A12930117";
+contractAddress = DonationJSON.networks['3'].address;
+
+const contractAbi = DonationJSON.abi;
+DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 // routers
 const indexRouter = require('./routes/index');
@@ -58,6 +62,7 @@ app.use('/users', usersRouter);
 app.use('/donation', donationRouter);
 app.use('/patient', patientsRouter);
 app.use('/payment', paymentRouter);
+// app.use('/verify', patientsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

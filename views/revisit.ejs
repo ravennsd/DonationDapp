@@ -170,44 +170,44 @@
         <div class="row g-3 patientData">
           <div class="col-md-5 position-relative">
             <label for="uid" class="me-2 fw-bold">Unique ID:</label>
-            <label for="uidFromDB" id="uidfromDB"><%= vRecord.uid%></label>
+            <label for="uidFromDB" id="uidfromDB"><%= pRecord.uid%></label>
           </div>
           <div class="col-md-7 position-relative">
             <label for="name" class="me-2 fw-bold">Name:</label>
             <label for="nameFromDB" id="patientNamefromDB"
-              ><%= vRecord.name%></label
+              ><%= pRecord.name%></label
             >
           </div>
 
           <div class="col-md-3 position-relative">
             <label for="age" class="me-2 fw-bold">Age:</label>
-            <label for="ageFromDB" id="agefromDB"><%= vRecord.age%></label>
+            <label for="ageFromDB" id="agefromDB"><%= pRecord.age%></label>
           </div>
 
           <div class="col-md-4 position-relative">
             <label for="gender" class="me-2 fw-bold">Gender:</label>
             <label for="genderFromDB" id="genderfromDB"
-              ><%= vRecord.gender%></label
+              ><%= pRecord.gender%></label
             >
           </div>
           <div class="col-md-5 position-relative">
             <label for="phone" class="me-2 fw-bold">Phone Number:</label>
             <label for="phoneFromDB" id="phonefromDB"
-              ><%= vRecord.phone%></label
+              ><%= pRecord.phone%></label
             >
           </div>
 
           <div class="col-md-12 position-relative">
             <label for="dob" class="me-2 fw-bold">Date Of Birth:</label>
             <label for="dobFromDB" id="dobfromDB"
-              ><%= vRecord.dateOfBirth%></label
+              ><%= pRecord.dateOfBirth%></label
             >
           </div>
 
           <div class="col-md-12 position-relative">
             <label for="address" class="me-2 fw-bold">Address:</label>
             <label for="addressFromDB" id="addressfromDB"
-              ><%= vRecord.address%></label
+              ><%= pRecord.address%></label
             >
           </div>
 
@@ -216,7 +216,7 @@
               >1st Record Date:</label
             >
             <label for="firstRecordFromDB" id="recordAddedfromDB"
-              ><%= vRecord.recordAdded%></label
+              ><%= pRecord.recordAdded%></label
             >
           </div>
         </div>
@@ -242,11 +242,11 @@
                   class="form-control"
                   name="uid"
                   id="validationTooltipPateintVerifySearch"
-                  aria-describedby="validationTooltipPateintVerifyPrependSearch"
+                  aria-describedby="validationPateintVerifyPrependSearch"
                   placeholder="Enter Unique ID"
                   required
                 />
-                <div class="invalid-tooltip">
+                <div class="invalid-">
                   Please choose a valid Unique ID.
                 </div>
                 <input
@@ -284,97 +284,97 @@
           novalidate
         >
           <div class="col-md-4 position-relative">
-            <label for="validationTooltipUniqueID" class="form-label"
+            <label for="validationDonationUniqueID" class="form-label"
               >Unique ID</label
             >
             <div class="input-group has-validation">
               <span
                 class="input-group-text"
-                id="validationTooltipUniqueIDPrepend"
+                id="validationDonationUniqueIDPrepend"
                 ><i class="fas fa-id-card-alt"></i
               ></span>
               <input
                 type="number"
                 class="form-control"
                 name="uid"
-                id="validationTooltipUniqueID"
+                id="validationDonationUniqueID"
                 aria-describedby="validationTooltipUniqueIDPrepend"
                 required
               />
-              <div class="invalid-tooltip">
+              <div class="invalid-donation">
                 Please choose a valid Unique ID.
               </div>
             </div>
           </div>
           <div class="col-md-8 position-relative">
-            <label for="validationTooltip01" class="form-label"
+            <label for="validationDonation01" class="form-label"
               >Donor name</label
             >
             <input
               type="text"
               class="form-control"
-              name="donationName"
-              id="validationTooltip01"
+              name="name"
+              id="validationDonation01"
               required
             />
-            <div class="invalid-tooltip">
+            <div class="invalid-donation">
               Please enter a valid donor name.
             </div>
           </div>
 
           <div class="col-md-3 position-relative">
-            <label for="validationTooltip02" class="form-label"
+            <label for="validationDonation02" class="form-label"
               >Hospital</label
             >
             <input
               type="text"
               class="form-control"
-              name="manufacturer"
-              id="validationTooltip02"
+              name="hospital"
+              id="validationDonation02"
               required
             />
-            <div class="invalid-tooltip">
+            <div class="invalid-donation">
               Please enter a valid hospital name.
             </div>
           </div>
           <div class="col-md-3 position-relative">
-            <label for="validationTooltipAge" class="form-label">Doctor</label>
+            <label for="validationDonationAge" class="form-label">Doctor</label>
             <input
               type="text"
               class="form-control"
-              name="batch"
-              id="validationTooltipbatch"
+              name="doctor"
+              id="validationDonationdoctor"
               required
             />
-            <div class="invalid-tooltip"></div>
+            <div class="invalid-donation"></div>
           </div>
           <div class="col-md-3 position-relative">
-            <label for="validationTooltipPhoneNumber" class="form-label"
+            <label for="validationDonationSLNumber" class="form-label"
               >Serial Number</label
             >
             <input
               type="number"
               class="form-control"
               name="slNo"
-              id="validationTooltipserialNumber"
+              id="validationDonationserialNumber"
               required
             />
-            <div class="invalid-tooltip">
+            <div class="invalid-donation">
               Please choose a valid serial number.
             </div>
           </div>
           <div class="col-md-3 position-relative">
-            <label for="validationTooltipDob" class="form-label"
+            <label for="validationDonationDate" class="form-label"
               >Date</label
             >
             <input
               type="date"
               class="form-control"
-              name="mfd"
-              id="validationTooltipMFD"
+              name="Ddate"
+              id="validationDonationDate"
               required
             />
-            <div class="invalid-tooltip">
+            <div class="invalid-donation">
               Please choose a valid date.
             </div>
           </div>
@@ -387,11 +387,11 @@
               required
             />
             <label class="form-check-label" for="reviewCheck">
-              Review all entered data before submitting
+             <blockquote Review all entered data before submitting></blockquote>
             </label>
-            <div class="invalid-tooltip">
+            <!-- <div class="invalid-donation">
               You must review before submitting.
-            </div>
+            </div> -->
           </div>
           <div class="col-12 position-relative">
             <button class="btn btn-primary" type="submit">Add Donation</button>

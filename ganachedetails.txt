@@ -1,0 +1,59 @@
+dress issues that do not require attention, run:
+  npm audit fix
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+neethu@neethu-VirtualBox:~/EthLab/Express-Donation-Dapp$ ganache 
+ganache v7.1.0 (@ganache/cli: 0.2.0, @ganache/core: 0.2.0)
+Starting RPC server
+
+Available Accounts
+==================
+(0) 0x915074fA6F38d105F6A963056401Df0820C7fcd7 (1000 ETH)
+(1) 0x2b58dDFa8D531640d4dFb3F0Bd600B212E4E21C4 (1000 ETH)
+(2) 0x77375448c75a24EA5989fD27D17Cd784EE076D56 (1000 ETH)
+(3) 0x1358D3720AeEC131bf8555Ea4e39a03B539e04FB (1000 ETH)
+(4) 0x46509DEfc22d334541A9ae5EDa561D6D9D025AD3 (1000 ETH)
+(5) 0x4a3D627b73F32e270e8845C78d75Bc1e46e43043 (1000 ETH)
+(6) 0x82cdd9c753E80A72622252fE5E65B0EbD7E565a5 (1000 ETH)
+(7) 0x9600b20D8737d12e5C67c6F176cB807B6d76D099 (1000 ETH)
+(8) 0x1Da53031B2b7dA24F782951F91568af76b4BF6C1 (1000 ETH)
+(9) 0xD59e511620E184209B8A7c579fa1Bc33466ac49d (1000 ETH)
+
+Private Keys
+==================
+(0) 0x1e1ae744c21cb0c8eb6e2d9e59fa2799305d72d32932aa1cbba7f8e61af341b6
+(1) 0xb1655770f3ba0382026d885eea660db45ef64426dea11c8df00377075dab03cd
+(2) 0x56d06a30be0e6921abff8d77c627d7d93840cea556e11162606e126c90755463
+(3) 0xd5771c676824d41bbc23579401cfe16a09b171fc807806fe331aefc0b4c0a73c
+(4) 0x162d582ea4e9116f47b106490aa59bf9f87d8e0ec9a5d4bf812e858962c6a1e0
+(5) 0x9b3a8ea30db89b862b79f30362a52609165c7e64c5749fb32237ef09c8f05bc6
+(6) 0xe57fb9c3e73372f9d70dd4e048174803ca6f45280a1d134b3a6c46f672f959f4
+(7) 0x5d3daa325220b9b58621d7e39ae157eb85f742db3f968c40bbad99ffedf5e3ad
+(8) 0x15ee6f8daf2f42caeff0b697ed42e1d9614d279a2cc8dbb3df3e56b07788a3f0
+(9) 0xbccc93dfe8356c164013b31ddc0b700324ce3957b3a825da94f4692d13ffc37a
+
+HD Wallet
+==================
+Mnemonic:      prepare review female atom sleep priority similar chicken medal put dirt buzz
+Base HD Path:  m/44'/60'/0'/0/{account_index}
+
+Default Gas Price
+==================
+2000000000
+
+BlockGas Limit
+==================
+30000000
+
+Call Gas Limit
+==================
+50000000
+
+Chain Id
+==================
+1337
+
+RPC Listening on 127.0.0.1:8545

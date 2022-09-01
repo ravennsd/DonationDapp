@@ -1,13 +1,22 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+// mongoose.connect("mmongodb+srv://Neethu01:Mongo0101@cluster0.i933t.mongodb.net/?retryWrites=true&w=majority");
+// const donationSchema = new Schema({
+//     uid: Number,
+//     dData: String
+
+// });
 const donationSchema = new Schema({
     uid: Number,
-    donorName: String,
-    Hospital: String,
-    Doctor: String,
+    name: {
+        type:String
+    },
+    hospital: {type:String},
+    doctor: String,
     slNo: Number,
-    mfd: Date,
+    date: String,
     recordAdded: { type: Date, default: Date.now }
+
 });
 
-module.exports = mongoose.model('donation', donationSchema, 'Donor');  //'Donation' model name & 'Donation' collection name created in DB
+module.exports = mongoose.model('donation', donationSchema, 'Donations');  //'Donation' model name & 'Donation' collection name created in DB

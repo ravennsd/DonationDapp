@@ -1,28 +1,29 @@
-
 const express = require('express');
+const { get } = require('mongoose');
 //const app= express();
-const { default: Web3 } = require('web3');
+Web3 = require('web3');
 const PatientRouter = express.Router();
 const PatientData = require('../model/patientData');
 const donationBCTxn = require("./donationBCTxn");
 
+//var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+
 /* POST patient details. */
-PatientRouter.post('/get', function (req, res, next) {
+PatientRouter.get('/get', function (req, res, next) {
   const data = req.body;
   PatientData.findOne({ uid: data.uid }, (err, patientRecords) => {
     if (err) {
       console.log(err)
     } else {
-      if (!patientRecords) {
+      if (!(patientRecords)) {
         res.status(404).send("Record Not Found");
-        console.log(err);
+        console.log("Record Not Found");
       }
       else {
         console.log(patientRecords);
-        res.status(200).render('revisit', { pRecord: patientRecords });
-          // .catch(_err => {
-          //   res.status(400).send("Unable to Read the Database");
-          // });
+        res.status(200).render('revisit', { pRecord: patientRecords }) .catch(_err => {
+            res.status(400).send("Unable to Read the Database");
+           });          
       }
     }
   });
@@ -54,48 +55,103 @@ PatientRouter.post('/add', function (req, res, next) {
 
   record = new PatientData(recordData);
   record.save((err, patientRecord) => {
+    // await function getAccounts(){
+    //   accounts = 
+    // }
 
-    web3.eth.getAccounts().then((accounts) => {
-      DonationContract.methods
-        .setPatient(data.uid, name, data.age, sex, address)
-        .send({ from: accounts[0], gas: 257685 })
-        .then((txn) => {
-          console.log(txn);
-        })
-    })
-
-    // //Infura Txn call
-    // const functionCall = DonationContract.methods
-    //   .setPatient(data.uid, name, data.age, sex, address);
-    // DonationBCTxn.sendTransaction(functionCall, (response) => {
-    //   if (response == true) console.log("Patient Record Added !");
-    //   else res.send("Transaction failed... Check Console for error...");
-    // });
-
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(patientRecord);
-      res.status(200).render('revisit',{pRecord: patientRecord});
-    }
-  });
-
-});
-
-/* POST verify patient. */
-PatientRouter.post('/verify', function (req, res, next) {
-  const data = req.body;
-  web3.eth.getAccounts().then((accounts) => {
-    DonationContract.methods
-      .getPatient(data.uid, data.patientCount)
-      .call({ from: accounts[0], gas: 257685 })
-      .then((txn) => {
+    DonationContract.methods.setPatient(data.uid, name, data.age, sex, address)
+      .send({from : accountAddress, gasLimit : "927000"}).then((txn) => {
         console.log(txn);
-        // res.status(200).send(txn);
-        res.status(200).render("verifyPatient",{VPD : txn});
+        if (err) {
+        console.log(err);
+      } else {
+        console.log(patientRecord);
+        res.status(200).render('revisit',{pRecord: patientRecord});
+      }
+        
       })
-  })
-});
+    });
+  
+  });
+  PatientRouter.post('/verify', function (req, res, next) {
+    const data = req.body;
+    // console.log("verified donation is", data)
+     // web3.eth.getAccounts().then((accounts) => {
+
+      DonationContract.methods
+        .getPatient(data.uid, data.patientCount)
+        .call({ from: accountAddress, gas: 257685 })
+        .then((txn) => {
+
+          PatientData.findOne({ uid: data.uid }, (err, patientRecords) => {
+            if (err) {
+              console.log(err)
+            } else {
+              if (!(patientRecords)) {
+                res.status(404).send("Record Not Found");
+                console.log("Record Not Found");
+              }
+              else {
+                console.log(txn);
+                // res.status(200).send(txn);
+                res.status(200).render("verifyPatient",{DPD : txn});
+                console.log(patientRecords);
+                // res.status(200).render('revisit', { pRecord: patientRecords }) .catch(_err => {
+                //     res.status(400).send("Unable to Read the Database");
+                //    });          
+              }
+            }
+          });
+        //   if(!(patientRecords)){
+        //     console.log("Not found")
+            
+        //   }
+        //   else{
+        //   console.log(txn);
+        //   // res.status(200).send(txn);
+        //   res.status(200).render("verifyPatient",{DPD : txn});
+        // }
+      })
+    });
+  
+//   PatientRouter.get('/verify', function (req, res, next) {
+    
+//     const data = req.body;
+
+//  -    web3.eth.getTransactionCount(accounts[0]).then(txCount => {
+//   var patientCount = web3.utils.toHex(txCount)
+ 
+
+//     // const functionCall = DonationContract.methods.getPatient( data.uid, data.patienCount).calldonationBCTxn.sendTransaction(functionCall, (response) => {
+//     //     if (response == true) {console.log("Patient Record is:" +data);
+//     //       res.status(200).render('verifyPateint',{pRecord: patientRecord});}else res.send("No such record")'});
+//      DonationContract.methods.getPatient( data.uid, data.patientCount)
+//      .send({from:accountAddress, gasLimit : "540000"}).then((txn) => {
+//        console.log(txn);
+//        if (err) {
+//          console.log(err); }
+//          else{
+//         console.log("Patient Record is:" + txn);
+//         res.status(200).render('verifyPatient',{VPD : txn});
+//          }
+//     })
+//     });
+  
+
+       
+/* POST verify patient. */
+
+  // web3.eth.getAccounts().then((accounts) => {
+  //   DonationContract.methods
+  //     .getPatient(data.uid, data.patientCount)
+  //     .call({ from: accounts[0], gas: 257685 })
+  //     .then((txn) => {
+  //       console.log(txn);
+  //       // res.status(200).send(txn);
+  //       res.status(200).render("verifyPatient",{VPD : txn});
+  //     })
+  // })
+// });
 
 /* POST Update patient. */
 PatientRouter.post('/update', function (req, res, next) {
@@ -103,13 +159,6 @@ PatientRouter.post('/update', function (req, res, next) {
 });
 
 module.exports = PatientRouter;
-
-
-
-
-
-
-
 
 
 
