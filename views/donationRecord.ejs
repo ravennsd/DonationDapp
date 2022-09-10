@@ -168,10 +168,7 @@
       <section class="DonationRecords px-5 py-3">
         <h1 class="text-center text-uppercase mb-3">Current Donation Record</h1>
         <div class="row g-3 DonationRecord">
-          <div class="col-md-8 position-relative">
-            <label for="name" class="me-2 fw-bold">Donor Name:</label>
-            <label for="nameFromDB" id="nameFromDB"><%= dRecord.name%></label>
-          </div>
+          
              <!-- <div class="col-md-8 position-relative">
             <label for="dData" class="me-2 fw-bold">Donor Details:</label>
             <label for="dDataFromDB" id="dDataFromDB"><%= dRecord.dData%></label>
@@ -180,6 +177,10 @@
           <div class="col-md-4 position-relative">
             <label for="uid" class="me-2 fw-bold">Unique ID:</label>
             <label for="uidFromDB" id="uidfromDB"><%= dRecord.uid%></label>
+          </div>
+          <div class="col-md-8 position-relative">
+            <label for="name" class="me-2 fw-bold">Donor Name:</label>
+            <label for="nameFromDB" id="nameFromDB"><%= dRecord.name%></label>
           </div>
           <div class="col-md-4 position-relative">
             <label for="hospital" class="me-2 fw-bold">Hospital:</label>
@@ -205,10 +206,11 @@
             <label for="date" class="me-2 fw-bold">Date Added:</label>
             <label for="dateFromDB" id="datefromDB"><%= dRecord.date%></label>
           </div>
-          <!-- <div class="col-md-6 position-relative">
+         
+          <div class="col-md-6 position-relative">
             <label for="date" class="me-2 fw-bold">Record Added:</label>
-            <label for="dateFromDB" id="datefromDB"><%= dRecord.Ddate%></label>
-          </div> -->
+            <label for="dateFromDB" id="datefromDB"><%= dRecord.recordAdded%></label>
+          </div>
         </div>
       </section>
       <hr />

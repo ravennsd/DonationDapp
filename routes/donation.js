@@ -1,10 +1,10 @@
 var express = require('express');
-const DonationRouter = express.Router();
+const donationRouter = express.Router();
 const DonationData = require('../model/donationData.js');
-// const DonationBCTxn = require("./donationBCTxn");
+const DonationBCTxn = require("./donationBCTxn");
 
 /* POST Donation details. */
-DonationRouter.post('/get', function (req, res, next) {
+donationRouter.post('/get', function (req, res, next) {
   const data = req.body;
   DonationData.find({ uid: data.uid }, (err, DonationRecords) => {
     if (err) {
@@ -25,10 +25,10 @@ DonationRouter.post('/get', function (req, res, next) {
 });
 
 /* POST add Donation. */
-DonationRouter.post('/add', function (req, res, next) {
-  data = req.body;
+donationRouter.post('/add', function (req, res, next) {
+  const data = req.body;
   console.log("data is", data);
-  const name = data.donorName;
+  // const name = data.donorName;
   const dData = {
     uid: data.uid,
     name: data.name,
@@ -37,15 +37,15 @@ DonationRouter.post('/add', function (req, res, next) {
     slNo: data.slNo,
     date: data.dDate
   }
-
+console.log(dData);
  //const dData = {dData: data.name + ', ' + data.hospital + ', ' + data.doctor + ', ' + data.slNo + ', ' + data.Ddate} // all the datas are joined together to form a unique data
 
   record = new DonationData(dData);
   record.save((err, DonationRecord) => {
 
     // web3.eth.getAccounts().then((accounts) => {
-      DonationContract.methods.setDonationData(data.uid, name, data.hospital, data.doctor, data.slNo, data.date)
-        .send({ from: accountAddress, gasLimit: 927000 }).then((txn) => {
+      DonationContract.methods.setDonationData(data.uid, data.name, data.hospital, data.doctor, data.slNo, data.date)
+        .send({from: accountAddress, gasLimit: "1007000" }).then((txn) => {
           console.log(txn);
           if (err) {
             console.log(err);
@@ -77,7 +77,7 @@ DonationRouter.post('/add', function (req, res, next) {
 });
 
 /* POST verify Donation */
-DonationRouter.post('/verify', function (req, res, next) {
+donationRouter.post('/verify', function (req, res, next) {
   const data = req.body;
   console.log("Verified donation is", data)
   const uid = data.uid;
@@ -111,7 +111,7 @@ DonationRouter.post('/verify', function (req, res, next) {
 });
 
 
-module.exports = DonationRouter;
+module.exports = donationRouter;
 
 
 

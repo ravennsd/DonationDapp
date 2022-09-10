@@ -8,13 +8,11 @@ const Schema = mongoose.Schema;
 // });
 const donationSchema = new Schema({
     uid: Number,
-    name: {
-        type:String
-    },
-    hospital: {type:String},
+    name: {type: String},
+    hospital: {type: String},
     doctor: String,
     slNo: Number,
-    date: String,
+    Date: Date,
     recordAdded: { type: Date, default: Date.now }
 
 });
