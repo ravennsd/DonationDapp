@@ -168,47 +168,49 @@
       <section class="donationRecords px-5 py-3">
         <h1 class="text-center text-uppercase mb-3">Previous Donation Record</h1>
 
-        <% for (i=0; i< d=dRecords.length; i++){%>
-          <% count= i+1 %>
+      
         <div class="row g-3 mb-2 donationRecord">
-          <label for="Count" class="fw-bold text-danger">Donation Count: <%=count%></label>
-          <div class="col-md-8 position-relative">
-            <label for="vname" class="me-2 fw-bold">Donation Name:</label>
-            <label for="DataFromBC"><%= dRecord[i].name%></label>
+         
+            <label for="name" class="me-2 fw-bold">Donation Name:</label>
+            <label for="DataFromBC"><%= dRecord[0].name%></label>
           </div>
 
           <div class="col-md-4 position-relative">
             <label for="uid" class="me-2 fw-bold">Unique ID:</label>
-            <label for="DataFromBC"><%= dRecords[i].uid%></label>
+            <label for="DataFromBC"><%= dRecord[0].uid%></label>
           </div>
 
           <div class="col-md-4 position-relative">
             <label for="hospital" class="me-2 fw-bold">Hospital:</label>
-            <label for="DataFromBC"><%= dRecord[i].hospital%></label>
+            <label for="DataFromBC"><%= dRecord[0].hospital%></label>
+          </div>
+          <div class="col-md-4 position-relative">
+            <label for="organ" class="me-2 fw-bold">Organ:</label>
+            <label for="DataFromBC"><%= dRecord[0].organ%></label>
           </div>
 
           <div class="col-md-4 position-relative">
             r<label for="doctor" class="me-2 fw-bold">Doctor:</label>
-            <label for="DataFromBC"><%= dRecord[i].doctor%></label>
+            <label for="DataFromBC"><%= dRecord[0].doctor%></label>
           </div>
 
           <div class="col-md-4 position-relative">
-            <label for="slno" class="me-2 fw-bold">SlNo:</label>
-            <label for="DataFromBC"><%= dRecord[i].slNo%></label>
+            <label for="slNo" class="me-2 fw-bold">SlNo:</label>
+            <label for="DataFromBC"><%= dRecord[0].slNo%></label>
           </div>
 
           <div class="col-md-6 position-relative">
             <label for="date" class="me-2 fw-bold">Date:</label>
-            <label for="DataFromBC"><%= drecord[i].date%></label>
+            <label for="DataFromBC"><%= dRecord[0].date%></label>
           </div>
 
           <div class="col-md-6 position-relative">
             <label for="record" class="me-2 fw-bold">Record Added:</label>
-            <label for="DataFromBC"><%= dRecords[i].recordAdded%></label>
+            <label for="DataFromBC"><%= dRecord[0].recordAdded%></label>
           </div>
         </div>
         <hr />
-        <%}%>
+       
       </section>
 
       <!-- Verify Donation Details -->
@@ -216,7 +218,7 @@
         <h1 class="text-center text-uppercase mb-3">Verify Donation Details</h1>
         <div class="verifyDonation mt-3">
           <form
-            action="/donation/verify"
+            action="/Donation/verify"
             method="post"
             class="row g-3 needs-validation"
             novalidate
@@ -240,25 +242,13 @@
                 <div class="invalid-tooltip">
                   Please choose a valid Unique ID.
                 </div>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="DonationCount"
-                  id="validationTooltipDonationVerifySearch"
-                  aria-describedby="validationTooltipDonationVerifyPrependSearch"
-                  placeholder="Update Count"
-                  required
-                />
+               
               </div>
             </div>
             <div class="col-md-1 position-relative">
               <button type="submit" class="btn btn-danger">Verify</button>
             </div>
-            <small
-              >*NB: Increase the value of <strong>Update Count</strong> if there
-              is any data change after initial record. Default value is
-              <strong>1</strong></small
-            >
+            
           </form>
         </div>
       </section>

@@ -70,16 +70,16 @@ router.get('/dashboard', function (req, res, next) {
 });
 
 /* GET verify patient route. */
-router.get('/DonationPatientData', function (req, res, next) {
-  res.render('DonationPatient', { title: 'Donation-Dapp' });
+router.get('/verifyPatient', function (req, res, next) {
+  res.render('verifyPatient', { title: 'Donation-Dapp' });
 });
 
 /* GET DonationRecord route. */
 router.get('/DonationRecord', function (req, res, next) {
-  res.render('DonationRecord', { title: 'Donation-Dapp' });
+  res.render('donationRecord', { title: 'Donation-Dapp' });
 });
 /* GET DonationRecord route. */
-router.get('/verifyDonationRecord', function (req, res, next) {
+router.get('/verifyDonation', function (req, res, next) {
   res.render('verifyDonation', { title: 'Donation-Dapp' });
 });
 

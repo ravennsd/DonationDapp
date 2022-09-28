@@ -3,34 +3,29 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-//const dotenv = require('dotenv').config();
-
-
 Web3 = require("web3");
-
-
 // web3 path
+// const web3 = new Web3('http://localhost:8545');
+var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+// // const web3= new Web3(web3.currentProvider);
+// const contractAddress = DonationJSON.networks['5777'].address;
+// const contractAbi = DonationJSON.abi;
+
+// DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 
-//const web3 = new Web3('http://localhost:8545');
-//const web3= new Web3(window.web3.currentProvider);
-//const contractAddress = DonationJSON.networks['5777'].address;
-//Donation = new web3.eth.Contract(contractAbi, contractAddress);
-
-
-// // Infura configuration
+// Infura configduration
+const infuraKey = "a89a3b1fa58841ae817fdd4944b78df6";
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-//const infuraKey = "a89a3b1fa58841ae817fdd4944b78df6";
+
 const mnemonic = "interest later goose elite unusual galaxy claw display balance response angry beach";
 const addressIndex = 0;
 const numberofAddresses = 1;
 const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`, addressIndex, numberofAddresses);
-//const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`, addressIndex, numberofAddresses);
 
-var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+
 web3 = new Web3(provider);
 
-//accountAddress = "0x6b3016683BC99E6f57402418c64dc5073c8b4B23";
 accountAddress= "0x958c266da218BADd303d6f6b91f4d67A12930117";
 contractAddress = DonationJSON.networks['3'].address;
 

@@ -221,7 +221,7 @@
         <div class="VerifyDonation mt-3">
           <label for="UniqueIDSearch" class="fw-bold"><i class="fas fa-notes-medical"></i> Verify Donation</label>
           <form
-            action="/Donation/verify"
+            action="/donation/verify"
             method="post"
             class="row g-3 needs-validation"
             novalidate
@@ -230,7 +230,7 @@
               <div class="input-group has-validation">
                 <span
                   class="input-group-text"
-                  id="validationTooltipDonationVerifyPrependSearch"
+                  id="validationDonationVerifyPrependSearch"
                   ><i class="fas fa-id-card-alt"></i
                 ></span>
                 <input
@@ -242,15 +242,15 @@
                   placeholder="Enter Unique ID"
                   required
                 />
-                <div class="invalid-tooltip">
+                <div class="invalid-donation">
                   Please choose a valid Unique ID.
                 </div>
                 <input
                   type="number"
                   class="form-control"
                   name="DonationCount"
-                  id="validationTooltipDonationVerifySearch"
-                  aria-describedby="validationTooltipDonationVerifyPrependSearch"
+                  id="validationDonationVerifySearch"
+                  aria-describedby="validationDonationVerifyPrependSearch"
                   placeholder="Update Count"
                   required
                 />
@@ -259,11 +259,7 @@
             <div class="col-md-1 position-relative">
               <button type="submit" class="btn btn-danger">Verify</button>
             </div>
-            <small
-              >*NB: Increase the value of <strong>Update Count</strong> if there
-              is any data change after initial record. Default value is
-              <strong>1</strong></small
-            >
+            
           </form>
         </div>
       </section>

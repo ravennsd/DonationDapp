@@ -10,6 +10,7 @@ const donationSchema = new Schema({
     uid: Number,
     name: {type: String},
     hospital: {type: String},
+    organ: String,
     doctor: String,
     slNo: Number,
     Date: Date,

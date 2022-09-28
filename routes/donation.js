@@ -1,4 +1,4 @@
-var express = require('express');
+ var express = require('express');
 const donationRouter = express.Router();
 const DonationData = require('../model/donationData.js');
 const DonationBCTxn = require("./donationBCTxn");
@@ -6,16 +6,17 @@ const DonationBCTxn = require("./donationBCTxn");
 /* POST Donation details. */
 donationRouter.post('/get', function (req, res, next) {
   const data = req.body;
-  DonationData.find({ uid: data.uid }, (err, DonationRecords) => {
+  console.log("Getted donation is:", data)
+  DonationData.find({ uid: data.uid }, (err, donationRecord) => {
     if (err) {
       console.log(err)
     } else {
-      if (!donationRecords) {
+      if (!donationRecord) {
         res.status(404).send("Record Not Found");
       }
       else {
-        console.log("Donation is" +Donationecords);
-        res.status(200).render('previousDRs', { dRecords: DonationRecords });
+        console.log("Donation is" +donationRecord);
+        res.status(200).render('previousDRs', { dRecord: donationRecord });
         // .catch(_err => {
         //   res.status(400).send("Unable to Read the Database");
         // });
@@ -32,10 +33,11 @@ donationRouter.post('/add', function (req, res, next) {
   const dData = {
     uid: data.uid,
     name: data.name,
+    organ: data.organ,
     hospital: data.hospital,
     doctor: data.doctor,
     slNo: data.slNo,
-    date: data.dDate
+    date: data.Date
   }
 console.log(dData);
  //const dData = {dData: data.name + ', ' + data.hospital + ', ' + data.doctor + ', ' + data.slNo + ', ' + data.Ddate} // all the datas are joined together to form a unique data
@@ -44,7 +46,7 @@ console.log(dData);
   record.save((err, DonationRecord) => {
 
     // web3.eth.getAccounts().then((accounts) => {
-      DonationContract.methods.setDonationData(data.uid, data.name, data.hospital, data.doctor, data.slNo, data.date)
+      DonationContract.methods.setDonationData(data.uid, data.name, data.hospital, data.organ, data.doctor, data.slNo, data.date)
         .send({from: accountAddress, gasLimit: "1007000" }).then((txn) => {
           console.log(txn);
           if (err) {
@@ -81,13 +83,13 @@ donationRouter.post('/verify', function (req, res, next) {
   const data = req.body;
   console.log("Verified donation is", data)
   const uid = data.uid;
-  const count = data.donationCount;
  
-    DonationContract.methods.getData(uid, count)
-      .call({ from: accountAddress, gasLimit: 507685 })
+ 
+    DonationContract.methods.getData(data.uid)
+      .call({ from: accountAddress, gas: 907685 })
       .then((txn) => {
         console.log("txn is", txn);
-        console.log(uid);
+        console.log(uid); 
         
          DonationData.find({ uid: data.uid }, (err, donationRecords) => {
          

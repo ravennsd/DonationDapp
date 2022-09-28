@@ -249,25 +249,13 @@
                 <div class="invalid-">
                   Please choose a valid Unique ID.
                 </div>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="patientCount"
-                  id="validationTooltipPateintVerifySearch"
-                  aria-describedby="validationTooltipPateintVerifyPrependSearch"
-                  placeholder="Update Count"
-                  required
-                />
+                
               </div>
             </div>
             <div class="col-md-1 position-relative">
               <button type="submit" class="btn btn-danger">Verify</button>
             </div>
-            <small
-              >*NB: Increase the value of <strong>Update Count</strong> if there
-              is any data change after initial record. Default value is
-              <strong>1</strong></small
-            >
+           
           </form>
         </div>
       </section>
@@ -336,6 +324,24 @@
             <div class="invalid-donation">
               Please enter a valid hospital name.
             </div>
+          </div>
+          <div class="col-md-3 position-relative">
+            <label for="validationDonationOrgan" class="form-label">Organ</label>
+            <select
+              class="form-select"
+              name="state"
+              id="validationState"
+              required
+            >
+              <option selected disabled value="">Choose...</option>
+              <option value="Kerala">Heart</option>
+              <option value="Karnataka">Retina</option>
+              <option value="Tamil Nadu">Kidney</option>
+              <option value="Goa">Pancreas</option>
+              <option value="Delhi">Lungs</option>
+              <option value="Andhra Pradesh">Lungs</option>
+              <option value="Maharashtra">Liver</option>
+            </select>
           </div>
           <div class="col-md-3 position-relative">
             <label for="validationDonationAge" class="form-label">Doctor</label>

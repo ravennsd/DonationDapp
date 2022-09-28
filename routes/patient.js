@@ -75,7 +75,7 @@ PatientRouter.post('/add', function (req, res, next) {
   });
   PatientRouter.post('/verify', function (req, res, next) {
     const data = req.body;
-    // console.log("verified donation is", data)
+    // console.log("verified patient is", data)
      // web3.eth.getAccounts().then((accounts) => {
 
       DonationContract.methods
