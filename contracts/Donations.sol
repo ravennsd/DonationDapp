@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: GPL-3.0
+
 
  //contract without count update
 // SPDX-License-Identifier: MIT
@@ -20,7 +20,7 @@ contract Donation {
     //mapping to retrieve patient data stored in the blockchian
     mapping(uint256 => mapping(uint256 => patientData)) private pData;
     // Iterable variable declaration for patient data count
-    mapping(uint256 => uint256) patientCount;
+   
 
     //function to set patient data
     function setPatient(
@@ -30,8 +30,8 @@ contract Donation {
         Sex _gender,
         string memory _location
     ) public {
-        patientCount[_uid] += 1;
-        pData[_uid][patientCount[_uid]] = patientData(
+       
+        pData[_uid] = patientData(
             _uid,
             _name,
             _age,
@@ -41,7 +41,7 @@ contract Donation {
     }
 
     // function to retrieve data of patient from blockchain
-    function getPatient(uint256 _uid, uint256 _patientCount)
+    function getPatient(uint256 _uid)
         public
         view
         returns (
@@ -53,33 +53,76 @@ contract Donation {
         )
     {
         return (
-            pData[_uid][_patientCount].uid,
-            pData[_uid][_patientCount].name,
-            pData[_uid][_patientCount].age,
-            pData[_uid][_patientCount].gender,
-            pData[_uid][_patientCount].location
+            pData[_uid].uid,
+            pData[_uid].name,
+            pData[_uid].age,
+            pData[_uid].gender,
+            pData[_uid].location
         );
     }
 
+
+  struct donationData {
+        uint256 uid;
+        string name;
+        string hospital;
+        string organ;
+        string doctor;
+        uint256 slNo;
+        string date;
+    }
     //mapping to retrieve Donation data stored in the blockchian
-    mapping(uint256 => mapping(uint256 => string)) private donationData;
+    mapping(uint256 => mapping(uint256 => donationData)) private dData;
     // Iterable variable declaration for Donation data count
-    mapping(uint256 => uint256) donationCount;
+ 
 
     //function to set Donaiton data
-    function setDonationData(uint256 _uid, string memory _donationData) public {
-        donationCount[_uid] += 1;
-        donationData[_uid][donationCount[_uid]] = _donationData;
+    // function setDonationData(uint256 _uid, string memory _donationData) public {
+    //     donationCount[_uid] += 1;
+    //     donationData[_uid][donationCount[_uid]] = _donationData;
+    // }  
+    function setDonationData(
+        uint256 _uid,
+        string memory _name,
+        string memory _hospital,
+        string memory _organ,
+        string memory _doctor,
+        uint256 _slNo,
+        string memory _date
+    ) public {
+       
+        dData[_uid] = donationData(
+            _uid,
+            _name,
+            _hospital,
+            _organ,
+            _doctor,
+            _slNo,
+            _date
+        );
     }
-
     // function to retrieve Donation data from blockchain
-    function getData(uint256 _uid, uint256 _donationCount)
+    // function getData(uint256 _uid, uint256 _donationCount)
+    //     public
+    //     view
+    //     returns (string memory)
+         function getData(uint256 _uid)
         public
         view
-        returns (string memory)
+        returns (uint256, string memory, string memory, string memory, string memory, string memory, uint256)
     {
-        return donationData[_uid][_donationCount];
+        // return donationData[_uid][_donationCount];
+         return (
+            dData[_uid].uid,
+            dData[_uid].name,
+            dData[_uid].hospital,
+            dData[_uid].organ,
+            dData[_uid].doctor,
+            dData[_uid].slNo
+            // dData[_uid][_donationCount].date
+        );
     }
+    
 }
 
 //contract with update count
