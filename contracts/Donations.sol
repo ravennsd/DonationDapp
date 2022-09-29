@@ -20,7 +20,7 @@ contract Donation {
     //mapping to retrieve patient data stored in the blockchian
     mapping(uint256 => mapping(uint256 => patientData)) private pData;
     // Iterable variable declaration for patient data count
-   
+    //mapping(uint256 => uint256) patientCount;
 
     //function to set patient data
     function setPatient(
@@ -74,7 +74,7 @@ contract Donation {
     //mapping to retrieve Donation data stored in the blockchian
     mapping(uint256 => mapping(uint256 => donationData)) private dData;
     // Iterable variable declaration for Donation data count
- 
+      //apping(uint256 => uint256) donationCount;
 
     //function to set Donaiton data
     // function setDonationData(uint256 _uid, string memory _donationData) public {
