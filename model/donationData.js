@@ -9,13 +9,10 @@ const Schema = mongoose.Schema;
 const donationSchema = new Schema({
     uid: Number,
     name: {type: String},
+    organ: {type: String},
     hospital: {type: String},
-    organ: String,
     doctor: String,
-    slNo: Number,
-    Date: Date,
-    recordAdded: { type: Date, default: Date.now }
-
+    slNo: String
 });
 
 module.exports = mongoose.model('donation', donationSchema, 'Donations');  //'Donation' model name & 'Donation' collection name created in DB

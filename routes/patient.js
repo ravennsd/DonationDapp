@@ -4,7 +4,7 @@ const { get } = require('mongoose');
 Web3 = require('web3');
 const PatientRouter = express.Router();
 const PatientData = require('../model/patientData');
-const donationBCTxn = require("./donationBCTxn");
+//const donationBCTxn = require("./donationBCTxn");
 
 //var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
 
@@ -20,7 +20,7 @@ PatientRouter.get('/get', function (req, res, next) {
         console.log("Record Not Found");
       }
       else {
-        console.log(patientRecords);
+        console.log("records:" +patientRecords);
         res.status(200).render('revisit', { pRecord: patientRecords }) .catch(_err => {
             res.status(400).send("Unable to Read the Database");
            });          
@@ -61,7 +61,7 @@ PatientRouter.post('/add', function (req, res, next) {
 
     DonationContract.methods.setPatient(data.uid, name, data.age, sex, address)
       .send({from : accountAddress, gasLimit : "927000"}).then((txn) => {
-        console.log(txn);
+        console.log("txn" +txn);
         if (err) {
         console.log(err);
       } else {
@@ -75,11 +75,9 @@ PatientRouter.post('/add', function (req, res, next) {
   });
   PatientRouter.post('/verify', function (req, res, next) {
     const data = req.body;
-    // console.log("verified patient is", data)
-     // web3.eth.getAccounts().then((accounts) => {
 
       DonationContract.methods
-        .getPatient(data.uid, data.patientCount)
+        .getPatient(data.uid)
         .call({ from: accountAddress, gas: 257685 })
         .then((txn) => {
 
@@ -92,66 +90,17 @@ PatientRouter.post('/add', function (req, res, next) {
                 console.log("Record Not Found");
               }
               else {
-                console.log(txn);
+                console.log("Txn" +txn);
                 // res.status(200).send(txn);
                 res.status(200).render("verifyPatient",{DPD : txn});
-                console.log(patientRecords);
-                // res.status(200).render('revisit', { pRecord: patientRecords }) .catch(_err => {
-                //     res.status(400).send("Unable to Read the Database");
-                //    });          
+                console.log("records" +patientRecords);
+                         
               }
             }
           });
-        //   if(!(patientRecords)){
-        //     console.log("Not found")
-            
-        //   }
-        //   else{
-        //   console.log(txn);
-        //   // res.status(200).send(txn);
-        //   res.status(200).render("verifyPatient",{DPD : txn});
-        // }
+        
       })
     });
-  
-//   PatientRouter.get('/verify', function (req, res, next) {
-    
-//     const data = req.body;
-
-//  -    web3.eth.getTransactionCount(accounts[0]).then(txCount => {
-//   var patientCount = web3.utils.toHex(txCount)
- 
-
-//     // const functionCall = DonationContract.methods.getPatient( data.uid, data.patienCount).calldonationBCTxn.sendTransaction(functionCall, (response) => {
-//     //     if (response == true) {console.log("Patient Record is:" +data);
-//     //       res.status(200).render('verifyPateint',{pRecord: patientRecord});}else res.send("No such record")'});
-//      DonationContract.methods.getPatient( data.uid, data.patientCount)
-//      .send({from:accountAddress, gasLimit : "540000"}).then((txn) => {
-//        console.log(txn);
-//        if (err) {
-//          console.log(err); }
-//          else{
-//         console.log("Patient Record is:" + txn);
-//         res.status(200).render('verifyPatient',{VPD : txn});
-//          }
-//     })
-//     });
-  
-
-       
-/* POST verify patient. */
-
-  // web3.eth.getAccounts().then((accounts) => {
-  //   DonationContract.methods
-  //     .getPatient(data.uid, data.patientCount)
-  //     .call({ from: accounts[0], gas: 257685 })
-  //     .then((txn) => {
-  //       console.log(txn);
-  //       // res.status(200).send(txn);
-  //       res.status(200).render("verifyPatient",{VPD : txn});
-  //     })
-  // })
-// });
 
 /* POST Update patient. */
 PatientRouter.post('/update', function (req, res, next) {
@@ -161,24 +110,3 @@ PatientRouter.post('/update', function (req, res, next) {
 module.exports = PatientRouter;
 
 
-
-/* Code Desposal
-
-  PatientData.find({ uid: data.uid },{$sort:{createdOn: -1}}, (err, patientRecords) => {
-
-  const nameB32 = web3.utils.rightPad(web3.utils.fromAscii(data.name), 64); // Name: string is converted to hex and then to bytes32
-
-  res.status(200).send(txn);
-
-  res.status(200).redirect('/revisit',{
-    uniqueID: patientRecord.uid,
-    name: patientRecord.name,
-    age: patientRecord.age,
-    gender: patientRecord.gender,
-    dob: patientRecord.dateOfBirth.toLocaleDateString(),
-    phone: patientRecord.phone,
-    address: patientRecord.address,
-    recordAdded: patientRecord.recordAdded.toLocaleDateString() + ' ' + patientRecord.recordAdded.toLocaleTimeString()
-  });
-
-*/

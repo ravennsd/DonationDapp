@@ -8,15 +8,14 @@ const patientSchema = new Schema({
     // required: [true, 'Name is required']
   },
   gender: {
-    type: String
-    // required: [true, 'Gender is required'],
-    // enum: ['0', '1', '2']
+    type: String,
+    //required: [true, 'Gender is required'],
+   
   },
   age: Number,
   dateOfBirth: Date,
   phone: Number,
-  address: String,
-  recordAdded: { type: Date, default: Date.now }
+  address: String
 });
 
 module.exports = mongoose.model('patient', patientSchema, 'Patients');  //'patient' model name & 'Patients' collection name created in DB

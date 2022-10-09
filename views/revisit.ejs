@@ -211,14 +211,8 @@
             >
           </div>
 
-          <div class="col-md-12 position-relative">
-            <label for="firstRecord" class="me-2 fw-bold"
-              >1st Record Date:</label
-            >
-            <label for="firstRecordFromDB" id="recordAddedfromDB"
-              ><%= pRecord.recordAdded%></label
-            >
-          </div>
+          
+  
         </div>
 
         <!-- Verify Patient details -->
@@ -247,7 +241,7 @@
                   required
                 />
                 <div class="invalid-">
-                  Please choose a valid Unique ID.
+                <small> Please choose a valid Unique ID.</small> 
                 </div>
                 
               </div>
@@ -290,7 +284,7 @@
                 required
               />
               <div class="invalid-donation">
-                Please choose a valid Unique ID.
+              <small> Please choose a valid Unique ID.</small> 
               </div>
             </div>
           </div>
@@ -306,10 +300,27 @@
               required
             />
             <div class="invalid-donation">
-              Please enter a valid donor name.
+            <small>  Please enter a valid donor name.</small> 
             </div>
           </div>
 
+          <div class="col-md-3 position-relative">
+            <label for="validationDonationOrgan" class="form-label">Organ</label>
+            <select
+              class="form-select"
+              name="organ"
+              id="validationOrgan"
+              required
+            >
+              <option selected disabled value="">Choose...</option>
+              <option value="Heart">Heart</option>
+              <option value="Retina">Retina</option>
+              <option value="Kidney">Kidney</option>
+              <option value="Pancreas">Pancreas</option>
+              <option value="Lungs">Lungs</option>
+              <option value="Liver">Liver</option>
+            </select>
+          </div>
           <div class="col-md-3 position-relative">
             <label for="validationDonation02" class="form-label"
               >Hospital</label
@@ -322,34 +333,16 @@
               required
             />
             <div class="invalid-donation">
-              Please enter a valid hospital name.
+            <small>Please enter a valid hospital name.</small>
             </div>
           </div>
           <div class="col-md-3 position-relative">
-            <label for="validationDonationOrgan" class="form-label">Organ</label>
-            <select
-              class="form-select"
-              name="state"
-              id="validationState"
-              required
-            >
-              <option selected disabled value="">Choose...</option>
-              <option value="Kerala">Heart</option>
-              <option value="Karnataka">Retina</option>
-              <option value="Tamil Nadu">Kidney</option>
-              <option value="Goa">Pancreas</option>
-              <option value="Delhi">Lungs</option>
-              <option value="Andhra Pradesh">Lungs</option>
-              <option value="Maharashtra">Liver</option>
-            </select>
-          </div>
-          <div class="col-md-3 position-relative">
-            <label for="validationDonationAge" class="form-label">Doctor</label>
+            <label for="validationDonationDoctor" class="form-label">Doctor</label>
             <input
               type="text"
               class="form-control"
               name="doctor"
-              id="validationDonationdoctor"
+              id="validationDonationDoctor"
               required
             />
             <div class="invalid-donation"></div>
@@ -362,26 +355,11 @@
               type="number"
               class="form-control"
               name="slNo"
-              id="validationDonationserialNumber"
+              id="validationDonationSLNumber"
               required
             />
             <div class="invalid-donation">
-              Please choose a valid serial number.
-            </div>
-          </div>
-          <div class="col-md-3 position-relative">
-            <label for="validationDonationDate" class="form-label"
-              >Date</label
-            >
-            <input
-              type="date"
-              class="form-control"
-              name="date"
-              id="validationDonationDate"
-              required
-            />
-            <div class="invalid-donation">
-              Please choose a valid date.
+            <small>Please choose a valid serial number.</small>
             </div>
           </div>
 
@@ -393,11 +371,9 @@
               required
             />
             <label class="form-check-label" for="reviewCheck">
-             <blockquote Review all entered data before submitting></blockquote>
+              <small>Review all entered data before submitting</small> 
             </label>
-            <!-- <div class="invalid-donation">
-              You must review before submitting.
-            </div> -->
+            
           </div>
           <div class="col-12 position-relative">
             <button class="btn btn-primary" type="submit">Add Donation</button>
@@ -406,7 +382,7 @@
       </section>
       <hr />
 
-      <!-- Footer -->
+
      
     </main>
   </body>

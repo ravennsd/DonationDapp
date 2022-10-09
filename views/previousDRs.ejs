@@ -179,15 +179,16 @@
             <label for="uid" class="me-2 fw-bold">Unique ID:</label>
             <label for="DataFromBC"><%= dRecord[0].uid%></label>
           </div>
+          <div class="col-md-4 position-relative">
+            <label for="organ" class="me-2 fw-bold">Organ:</label>
+            <label for="DataFromBC"><%= dRecord[0].organ%></label>
+          </div>
 
           <div class="col-md-4 position-relative">
             <label for="hospital" class="me-2 fw-bold">Hospital:</label>
             <label for="DataFromBC"><%= dRecord[0].hospital%></label>
           </div>
-          <div class="col-md-4 position-relative">
-            <label for="organ" class="me-2 fw-bold">Organ:</label>
-            <label for="DataFromBC"><%= dRecord[0].organ%></label>
-          </div>
+          
 
           <div class="col-md-4 position-relative">
             r<label for="doctor" class="me-2 fw-bold">Doctor:</label>
@@ -197,11 +198,6 @@
           <div class="col-md-4 position-relative">
             <label for="slNo" class="me-2 fw-bold">SlNo:</label>
             <label for="DataFromBC"><%= dRecord[0].slNo%></label>
-          </div>
-
-          <div class="col-md-6 position-relative">
-            <label for="date" class="me-2 fw-bold">Date:</label>
-            <label for="DataFromBC"><%= dRecord[0].date%></label>
           </div>
 
           <div class="col-md-6 position-relative">
@@ -240,7 +236,7 @@
                   required
                 />
                 <div class="invalid-tooltip">
-                  Please choose a valid Unique ID.
+                  <small>Please choose a valid Unique ID.</small>
                 </div>
                
               </div>

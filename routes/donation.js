@@ -1,7 +1,7 @@
  var express = require('express');
 const donationRouter = express.Router();
 const DonationData = require('../model/donationData.js');
-const DonationBCTxn = require("./donationBCTxn");
+//const DonationBCTxn = require("./donationBCTxn");
 
 /* POST Donation details. */
 donationRouter.post('/get', function (req, res, next) {
@@ -36,8 +36,8 @@ donationRouter.post('/add', function (req, res, next) {
     organ: data.organ,
     hospital: data.hospital,
     doctor: data.doctor,
-    slNo: data.slNo,
-    date: data.Date
+    slNo: data.slNo
+   
   }
 console.log(dData);
  //const dData = {dData: data.name + ', ' + data.hospital + ', ' + data.doctor + ', ' + data.slNo + ', ' + data.Ddate} // all the datas are joined together to form a unique data
@@ -46,8 +46,8 @@ console.log(dData);
   record.save((err, DonationRecord) => {
 
     // web3.eth.getAccounts().then((accounts) => {
-      DonationContract.methods.setDonationData(data.uid, data.name, data.hospital, data.organ, data.doctor, data.slNo, data.date)
-        .send({from: accountAddress, gasLimit: "1007000" }).then((txn) => {
+      DonationContract.methods.setDonationData(data.uid, data.name, data.organ, data.hospital, data.doctor, data.slNo)
+        .send({from: accountAddress, gasLimit: "10007000" }).then((txn) => {
           console.log(txn);
           if (err) {
             console.log(err);
@@ -58,23 +58,6 @@ console.log(dData);
         })
   });
 
-    // // Infura Txn call
-    // const functionCall = DonationContract.methods
-    //   .setDonationData(data.uid, vData);
-    // DonationBCTxn.sendTransaction(functionCall, (response) => {
-    //   if (response == true) console.log("Donation Record Added !");
-    //   else res.send("Transaction failed... Check Console for error...");
-    // });
-
-
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log(record);
-  //     // res.status(200).send(record);
-  //     res.status(200).render('DonationRecord', { dRecord: record });
-  //   }
-  // });
 
 });
 
@@ -115,25 +98,3 @@ donationRouter.post('/verify', function (req, res, next) {
 
 module.exports = donationRouter;
 
-
-
-
-
-
-
-
-
-
-
-/* Code Desposal
-
-  expDate: data.expDate
-
-  const name = data.vaccineName.substring(0, 3);
-  const company = data.manufacturer.substring(0, 3);
-  const batch = data.batch.substring(0, 4);
-  const slNo = data.slNo.substring(0, 3);
-  const mfd = data.mfd.substring(0, 3);
-  const expDate = data.expDate.substring(0, 3);
-
-*/

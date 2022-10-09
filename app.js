@@ -21,13 +21,13 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const mnemonic = "interest later goose elite unusual galaxy claw display balance response angry beach";
 const addressIndex = 0;
 const numberofAddresses = 1;
-const provider = new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`, addressIndex, numberofAddresses);
+const provider = new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/66143caa10564dea879e148c7810433b`, addressIndex, numberofAddresses);
 
 
 web3 = new Web3(provider);
 
 accountAddress= "0x958c266da218BADd303d6f6b91f4d67A12930117";
-contractAddress = DonationJSON.networks['3'].address;
+contractAddress = DonationJSON.networks['5'].address;
 
 const contractAbi = DonationJSON.abi;
 DonationContract = new web3.eth.Contract(contractAbi, contractAddress);

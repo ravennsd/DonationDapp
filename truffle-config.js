@@ -68,14 +68,39 @@ module.exports = {
     // timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
     // skipDryRun: false     // Skip dry run before migrations? (default: false for public nets )
     // },
-    ropsten: {
-      provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`),
-      network_id: 3,       // Ropsten's id
-      gas: 5500000,        // Ropsten has a lower block limit than mainnet
-      confirmations: 2,    // # of confs to wait between deployments. (default: 0)
-      timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
-      skipDryRun: false     // Skip dry run before migrations? (default: false for public nets )
-      },
+    // ropsten: {
+    //   provider: () => new HDWalletProvider(mnemonic, `https://ropsten.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6`),
+    //   network_id: 3,       // Ropsten's id
+    //   gas: 5500000,        // Ropsten has a lower block limit than mainnet
+    //   confirmations: 2,    // # of confs to wait between deployments. (default: 0)
+    //   timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)
+    //   skipDryRun: false     // Skip dry run before migrations? (default: false for public nets )
+    //   },
+    goerli: {
+      provider: () => new HDWalletProvider(mnemonic, 'https://goerli.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6'),
+      network_id: 5, 
+      gas: 550000,
+      confirmations: 2, 
+      timeoutBlocks:200, 
+      skipDryRun: false
+    },
+    sepolia:{
+      provider: () => new HDWalletProvider(mnemonic, 'https://sepolia.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6'),
+      network_id: 11155111, 
+      gas: 550000,
+      confirmations: 2, 
+      timeoutBlocks:200, 
+      skipDryRun: false
+    },
+     
+    gorli:{
+      provider: () => new HDWalletProvider(mnemonic, 'https://goerli.infura.io/v3/66143caa10564dea879e148c7810433b'),
+      network_id: 5, 
+      gas: 1850000,
+      confirmations: 2, 
+      timeoutBlocks:200, 
+      skipDryRun: false
+    },
     // Useful for private networks
     // private: {
     // provider: () => new HDWalletProvider(mnemonic, `https://network.io`),
