@@ -111,11 +111,11 @@
               ><i class="fas fa-tv me-2"></i> Dashboard</a
             >
           </li>
-          <li>
+          <!-- <li>
             <a href="/user" class="nav-item p-2">
               <i class="fas fa-user-cog me-2"></i> User Account</a
             >
-          </li>
+          </li> -->
           <li>
             <a href="#" class="nav-item p-2 active">
               <i class="fas fa-user-plus me-2"></i> New Pateint</a
@@ -185,7 +185,7 @@
               required
             />
             <!-- <div class="valid-tooltip">Looks good!</div> -->
-            <div class="invalid-FName">Please enter a valid first name.</div>
+            <div class="invalid-FName"><small>Please enter a valid first name.</small></div>
           </div>
           <div class="col-md-4 position-relative">
             <label for="validationLName" class="form-label"
@@ -198,7 +198,7 @@
               id="validationLName"
               required
             />
-            <div class="invalid-name">Please enter a valid last name.</div>
+            <div class="invalid-name"><small>Please enter a valid last name.</small></div>
           </div>
           <div class="col-md-4 position-relative">
             <label for="validationUniqueID" class="form-label"
@@ -219,7 +219,7 @@
                 required
               />
               <div class="invalid-ID">
-                Please choose a valid Unique ID.
+                <small>Please choose a valid Unique ID.</small>
               </div>
             </div>
           </div>
@@ -234,7 +234,7 @@
               maxlength="3"
               required
             />
-            <div class="invalid-age">Please choose a valid Age.</div>
+            <div class="invalid-age"><small>Please choose a valid age.</small></div>
           </div>
           <div class="col-md-3 position-relative">
             <label for="validationGender" class="form-label"
@@ -251,7 +251,7 @@
               <option value="female">Female</option>
               <option value="others">Others</option>
             </select>
-            <div class="invalid-gender">Please choose a valid Gender.</div>
+            <div class="invalid-gender"><small>Please choose a valid gender.</small></div>
           </div>
           <div class="col-md-3 position-relative">
             <label for="validationTooltipPhoneNumber" class="form-label"
@@ -265,8 +265,8 @@
               minlength="10"
               required
             />
-            <div class="invalid-tooltip">
-              Please choose a valid Phone Number.
+            <div class="invalid-phone">
+            <small>Please choose a valid number.</small>
             </div>
           </div>
           <div class="col-md-3 position-relative">
@@ -280,7 +280,7 @@
               id="validationTooltipDob"
               required
             />
-            <div class="invalid-tooltip">Please choose a valid Date.</div>
+            <div class="invalid-date"><small>Please choose a valid date.</small></div>
           </div>
 
           <div class="col-md-6 position-relative">
@@ -292,7 +292,7 @@
               id="validationTooltip03"
               required
             />
-            <div class="invalid-tooltip">Please provide a valid city.</div>
+            <div class="invalid-city"><small>Please provide a valid city.</small></div>
           </div>
           <div class="col-md-3 position-relative">
             <label for="validationTooltip04" class="form-label">State</label>
@@ -312,7 +312,7 @@
               <option value="Maharashtra">Maharashtra</option>
               <option value="Telungana">Telungana</option>
             </select>
-            <div class="invalid-State">Please select a valid state.</div>
+            <div class="invalid-State"><small>Please select a valid state.</small></div>
           </div>
           <div class="col-md-3 position-relative">
             <label for="validationPin" class="form-label">Pincode</label>
@@ -323,8 +323,9 @@
               id="validationPin"
               required
             />
-            <div class="invalid-Pin">Please provide a valid Pincode.</div>
+            <div class="invalid-Pin"><small>Please provide a valid pincode.</div></div>
           </div>
+          <br>
 
           <div class="col-12 position-relative">
             <input
@@ -334,11 +335,10 @@
               required
             />
             <label class="form-check-label" for="reviewCheck">
-              Review all entered data before submitting
+            <small style ="color:rgb(55, 55, 202);">Review all entered data before submitting</small>
             </label>
-            <div class="invalid">
-              You must review before submitting.
             </div>
+            <br>
           </div>
           <div class="col-12 position-relative">
             <button class="btn btn-primary" type="submit">Add Patient</button>

@@ -111,11 +111,11 @@
               ><i class="fas fa-tv me-2"></i> Dashboard</a
             >
           </li>
-          <li>
+          <!-- <li>
             <a href="/user" class="nav-item p-2">
               <i class="fas fa-user-cog me-2"></i> User Account</a
             >
-          </li>
+          </li> -->
           <li>
             <a href="/new" class="nav-item p-2">
               <i class="fas fa-user-plus me-2"></i> New Pateint</a
@@ -228,7 +228,7 @@
               <div class="input-group has-validation">
                 <span
                   class="input-group-text"
-                  id="validationTooltipPateintVerifyPrependSearch"
+                  id="validationPateintVerifyPrependSearch"
                   ><i class="fas fa-id-card-alt"></i
                 ></span>
                 <input
@@ -240,8 +240,9 @@
                   placeholder="Enter Unique ID"
                   required
                 />
-                <div class="invalid-">
-                <small> Please choose a valid Unique ID.</small> 
+
+                <div class="invalid-ID">
+                 Please choose a valid Unique ID.
                 </div>
                 
               </div>
@@ -312,6 +313,7 @@
               id="validationOrgan"
               required
             >
+           
               <option selected disabled value="">Choose...</option>
               <option value="Heart">Heart</option>
               <option value="Retina">Retina</option>
@@ -320,6 +322,9 @@
               <option value="Lungs">Lungs</option>
               <option value="Liver">Liver</option>
             </select>
+            <div class="invalid-donation">
+              <small>  Please enter a valid organ.</small> 
+            </div>
           </div>
           <div class="col-md-3 position-relative">
             <label for="validationDonation02" class="form-label"
@@ -371,8 +376,10 @@
               required
             />
             <label class="form-check-label" for="reviewCheck">
-              <small>Review all entered data before submitting</small> 
-            </label>
+              <small style ="color:rgb(56, 56, 184);">Review all entered data before submitting</small>
+              </label>
+              </div>
+              <br>
             
           </div>
           <div class="col-12 position-relative">

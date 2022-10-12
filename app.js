@@ -10,7 +10,6 @@ var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json')
 // // const web3= new Web3(web3.currentProvider);
 // const contractAddress = DonationJSON.networks['5777'].address;
 // const contractAbi = DonationJSON.abi;
-
 // DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 
@@ -34,7 +33,7 @@ DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 // routers
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/user');
+//const usersRouter = require('./routes/user');
 const donationRouter = require('./routes/donation');
 const patientsRouter = require('./routes/patient');
 const paymentRouter = require('./routes/payment');
@@ -53,11 +52,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routing paths
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/user', usersRouter);
 app.use('/donation', donationRouter);
 app.use('/patient', patientsRouter);
 app.use('/payment', paymentRouter);
-// app.use('/verify', patientsRouter);
+app.use('/verify', patientsRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

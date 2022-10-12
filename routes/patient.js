@@ -11,6 +11,7 @@ const PatientData = require('../model/patientData');
 /* POST patient details. */
 PatientRouter.get('/get', function (req, res, next) {
   const data = req.body;
+  console.log("data" +data)
   PatientData.findOne({ uid: data.uid }, (err, patientRecords) => {
     if (err) {
       console.log(err)
@@ -44,11 +45,11 @@ PatientRouter.post('/add', function (req, res, next) {
     address: address
   }
 
-  // Gender variable for contract
-  if (data.gender == 'male') {
+  //Gender variable for contract
+  if (data.gender == 'Male') {
     sex = 0;
   }
-  else if (data.gender == 'female') {
+  else if (data.gender == 'Female') {
     sex = 1;
   }
   else { sex = 2; }
@@ -61,7 +62,7 @@ PatientRouter.post('/add', function (req, res, next) {
 
     DonationContract.methods.setPatient(data.uid, name, data.age, sex, address)
       .send({from : accountAddress, gasLimit : "927000"}).then((txn) => {
-        console.log("txn" +txn);
+        console.log("txn" +JSON.stringify(txn));
         if (err) {
         console.log(err);
       } else {
@@ -75,13 +76,21 @@ PatientRouter.post('/add', function (req, res, next) {
   });
   PatientRouter.post('/verify', function (req, res, next) {
     const data = req.body;
+   console.log("body" +(JSON.stringify(data)));
+   
+  
 
-      DonationContract.methods
-        .getPatient(data.uid)
+      DonationContract.methods.getPatient(data.uid)
         .call({ from: accountAddress, gas: 257685 })
         .then((txn) => {
 
+          console.log("txn will be" +JSON.stringify(txn));
+
+          
+
           PatientData.findOne({ uid: data.uid }, (err, patientRecords) => {
+
+            
             if (err) {
               console.log(err)
             } else {
@@ -91,13 +100,31 @@ PatientRouter.post('/add', function (req, res, next) {
               }
               else {
                 console.log("Txn" +txn);
+                console.log(txn[3]);
+                
+            
+              if (txn[3] == 0){
+                 
+                 txn[3] = 'Male'
+                }
+              else if(txn[3] == 1){
+                
+                txn[3] = 'Female';
+              }
+              else {
+                txn[3] = 'Others';
+              }
+          
+          
                 // res.status(200).send(txn);
                 res.status(200).render("verifyPatient",{DPD : txn});
                 console.log("records" +patientRecords);
                          
-              }
-            }
-          });
+            
+          }
+
+        }
+        });
         
       })
     });

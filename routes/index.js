@@ -50,7 +50,7 @@ router.get('/revisit', function (req, res, next) {
 router.get('/user', function (req, res, next) {
   const user = store.getAll().user;
   data = req.body;
-  console.log(body);
+  //console.log(body);
   const name = user.fname + " " + user.lname;
   const phone = user.phone;
   const email = user.email;

@@ -182,6 +182,10 @@
             <label for="name" class="me-2 fw-bold">Donor Name:</label>
             <label for="nameFromDB" id="nameFromDB"><%= dRecord.name%></label>
           </div>
+          <div class="col-md-8 position-relative">
+            <label for="name" class="me-2 fw-bold">Organ Donated:</label>
+            <label for="nameFromDB" id="nameFromDB"><%= dRecord.organ%></label>
+          </div>
           <div class="col-md-4 position-relative">
             <label for="hospital" class="me-2 fw-bold">Hospital:</label>
             <label for="hospitalFromDB" id="hospitalfromDB"
@@ -239,15 +243,7 @@
                 <div class="invalid-donation">
                   Please choose a valid Unique ID.
                 </div>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="DonationCount"
-                  id="validationDonationVerifySearch"
-                  aria-describedby="validationDonationVerifyPrependSearch"
-                  placeholder="Update Count"
-                  required
-                />
+               
               </div>
             </div>
             <div class="col-md-1 position-relative">
@@ -287,7 +283,7 @@
                 placeholder="Enter Unique ID"
                 required
               />
-              <div class="invalid-tooltip">
+              <div class="invalid-ID">
                 Please choose a valid Unique ID.
               </div>
             </div>
