@@ -108,7 +108,7 @@
     <main>
       <section class="mx-auto registerBox">
         <h1 class="display-3 mb-4 text-white">Sign Up</h1>
-        <form class="row g-3 needs-validation text-white" method="POST" action="/users/register" novalidate>
+        <form class="row g-3 needs-validation text-white" method="POST" action="/user/register" novalidate>
           <div class="col-md-6 position-relative">
             <label for="validationCustom01" class="form-label"
               >First name</label
@@ -121,7 +121,7 @@
               name="fname"
               required
             />
-            <div class="invalid-tooltip">Please enter first name</div>
+            <div class="invalid-fnamme">Please enter first name</div>
           </div>
           <div class="col-md-6 position-relative">
             <label for="validationCustom02" class="form-label">Last name</label>
@@ -133,7 +133,7 @@
               name="lname"
               required
             />
-            <div class="invalid-tooltip">Please enter last name</div>
+            <div class="invalid-lname">Please enter last name</div>
           </div>
           <div class="col-md-6 position-relative">
             <label for="validationCustomUsername" class="form-label"
@@ -150,7 +150,7 @@
                 name="email"
                 required
               />
-              <div class="invalid-tooltip">Please enter a valid mail id.</div>
+              <div class="invalid-email">Please enter a valid mail id.</div>
             </div>
           </div>
           <div class="col-md-6 position-relative">
@@ -165,7 +165,7 @@
               name="phone"
               required
             />
-            <div class="invalid-tooltip">
+            <div class="invalid-num">
               Please provide a valid phone number.
             </div>
           </div>
@@ -179,7 +179,7 @@
               name="password"
               required
             />
-            <div class="invalid-tooltip">Please provide a password.</div>
+            <div class="invalid-pass">Please provide a password.</div>
           </div>
           <div class="col-md-6 position-relative">
             <label for="validationCustom06" class="form-label"
@@ -192,7 +192,7 @@
               placeholder="Confirm Password"
               required
             />
-            <div class="invalid-tooltip">Please provide same password.</div>
+            <div class="invalid-pass">Please provide same password.</div>
           </div>
           <div class="col-12 position-relative">
             <div class="form-check">

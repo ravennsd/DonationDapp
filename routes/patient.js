@@ -4,7 +4,7 @@ const { get } = require('mongoose');
 Web3 = require('web3');
 const PatientRouter = express.Router();
 const PatientData = require('../model/patientData');
-//const donationBCTxn = require("./donationBCTxn");
+const donationBCTxn = require("./donationBCTxn");
 
 //var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
 

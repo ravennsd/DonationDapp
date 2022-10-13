@@ -113,7 +113,11 @@ module.exports = {
   mocha: {
     // timeout: 100000
   },
-
+  // testnet: {
+    
+  //   networkCheckTimeout: 100000,
+  //   timeoutBlocks: 200
+  // },
   // Configure your compilers
   compilers: {
     solc: {

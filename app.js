@@ -33,7 +33,7 @@ DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 // routers
 const indexRouter = require('./routes/index');
-//const usersRouter = require('./routes/user');
+const usersRouter = require('./routes/user');
 const donationRouter = require('./routes/donation');
 const patientsRouter = require('./routes/patient');
 const paymentRouter = require('./routes/payment');
@@ -52,7 +52,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // routing paths
 app.use('/', indexRouter);
-//app.use('/user', usersRouter);
+app.use('/user', usersRouter);
 app.use('/donation', donationRouter);
 app.use('/patient', patientsRouter);
 app.use('/payment', paymentRouter);
