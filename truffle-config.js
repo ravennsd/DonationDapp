@@ -85,19 +85,23 @@ module.exports = {
       skipDryRun: false
     },
     sepolia:{
-      provider: () => new HDWalletProvider(mnemonic, 'https://sepolia.infura.io/v3/a89a3b1fa58841ae817fdd4944b78df6'),
+      provider: () => new HDWalletProvider(mnemonic, 'https://sepolia.infura.io/v3/ec9e50d3250b4edc933024f314ec8b2f'),
       network_id: 11155111, 
-      gas: 550000,
+      gas: 1850000,
+      gasPrice: 50000000000,
+      networkCheckTimeout:10000000,
       confirmations: 2, 
       timeoutBlocks:200, 
       skipDryRun: false
     },
      
     gorli:{
-      provider: () => new HDWalletProvider(mnemonic, 'https://goerli.infura.io/v3/66143caa10564dea879e148c7810433b'),
+      provider: () => new HDWalletProvider(mnemonic, 'https://goerli.infura.io/v3/ec9e50d3250b4edc933024f314ec8b2f'),
       network_id: 5, 
-      gas: 1850000,
+      gas: 1800000,
       confirmations: 2, 
+      gasPrice: 50000000000,
+      networkCheckTimeout:10000000,
       timeoutBlocks:200, 
       skipDryRun: false
     },
@@ -115,7 +119,7 @@ module.exports = {
   },
   // testnet: {
     
-  //   networkCheckTimeout: 100000,
+  //   networkCheckTimeout: 1000000,
   //   timeoutBlocks: 200
   // },
   // Configure your compilers

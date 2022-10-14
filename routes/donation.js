@@ -16,10 +16,10 @@ donationRouter.post('/get', function (req, res, next) {
       }
       else {
         console.log("Donation is" +donationRecord);
-        res.status(200).render('previousDRs', { dRecord: donationRecord });
-        // .catch(_err => {
-        //   res.status(400).send("Unable to Read the Database");
-        // });
+        res.status(200).render('previousDRs', { dRecord: donationRecord })
+        .catch(_err => {
+          res.status(400).send("Unable to Read the Database");
+        });
       }
     }
   });
@@ -28,8 +28,8 @@ donationRouter.post('/get', function (req, res, next) {
 /* POST add Donation. */
 donationRouter.post('/add', function (req, res, next) {
   const data = req.body;
-  console.log("data is", data);
-  // const name = data.donorName;
+  console.log("data is", JSON.stringify(data));
+  
   const dData = {
     uid: data.uid,
     name: data.name,
@@ -39,8 +39,6 @@ donationRouter.post('/add', function (req, res, next) {
     slNo: data.slNo
    
   }
-console.log(dData);
- //const dData = {dData: data.name + ', ' + data.hospital + ', ' + data.doctor + ', ' + data.slNo + ', ' + data.Ddate} // all the datas are joined together to form a unique data
 
   record = new DonationData(dData);
   record.save((err, DonationRecord) => {
@@ -48,13 +46,17 @@ console.log(dData);
     // web3.eth.getAccounts().then((accounts) => {
       DonationContract.methods.setDonationData(data.uid, data.name, data.organ, data.hospital, data.doctor, data.slNo)
         .send({from: accountAddress, gasLimit: "10007000" }).then((txn) => {
-          console.log(txn);
+          console.log("txn" +JSON.stringify(txn));
           if (err) {
             console.log(err);
           } else {
             console.log("donation record is" +DonationRecord);
-            res.status(200).render('donationRecord',{dRecord: DonationRecord});
-          }
+
+            res.status(200).render('donationRecord',{dRecord: DonationRecord})
+          //   .catch(_err => {
+          //     res.status(400).send("Unable to Read the Database");
+          // })
+        }
         })
   });
 
@@ -88,12 +90,16 @@ donationRouter.post('/verify', function (req, res, next) {
           }
           else {
             console.log(txn); console.log(donationRecords)
-        res.status(200).render("verifyDonation", { DVD: txn });
-         }
-       }
-  })
+        res.status(200).render("verifyDonation", { DVD: txn })
+        // .catch(_err => {
+        //   res.status(400).send("Unable to Read the Database");
+        // })
+          }
+         
+      }
 });
 });
+})
 
 
 module.exports = donationRouter;

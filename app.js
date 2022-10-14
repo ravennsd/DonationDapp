@@ -20,7 +20,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const mnemonic = "interest later goose elite unusual galaxy claw display balance response angry beach";
 const addressIndex = 0;
 const numberofAddresses = 1;
-const provider = new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/66143caa10564dea879e148c7810433b`, addressIndex, numberofAddresses);
+const provider = new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/ec9e50d3250b4edc933024f314ec8b2f`, addressIndex, numberofAddresses);
 
 
 web3 = new Web3(provider);
