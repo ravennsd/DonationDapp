@@ -100,7 +100,7 @@ contract Donation {
     }
     // function to retrieve Donation data from blockchain
    
-         function getData(uint256 _uid)
+        function getData(uint256 _uid)
         public
         view
         returns (uint256, string memory, string memory, string memory, string memory, string memory)

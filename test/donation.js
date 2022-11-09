@@ -34,26 +34,26 @@ contract("Donation", function (/* accounts */) {
 
   /* Donation Functions testing */
   it('Add Donation Details', async function () {
-    const Donation = await Donation.deployed();
+    const donation = await Donation.deployed();
 
     /* Test data declaration */
     uid = 1011;
-    name="Test";
-    organ="Test";
+    name1="Test";
+    organ= 0;
     hospital="Test";
     doctor="Test";
     slNo="Test";
     
     // donationCount = 1;
 
-    await Donation.setDonationData(uid, donationData); //setDonationData method for adding Donation data to blockchain
-    donationDetails = await Donation.getData(uid, donationCount); //getData method for getting data from the blockchain
-    assert.equal(patientDeatails[0], uid, "Test fail"); //Unique ID testing
-    assert.equal(patientDeatails[1], name, "Test fail"); //Donation data testing
-    assert.equal(patientDeatails[2], organ, "Test fail");
-    assert.equal(patientDeatails[3], hospital, "Test fail");
-    assert.equal(patientDeatails[4], doctor, "Test fail");
-    assert.equal(patientDeatails[5], slNo, "Test fail");
+    await donation.setDonationData(uid, name1, organ, hospital, doctor, slNo); //setDonationData method for adding Donation data to blockchain
+    donationDetails = await donation.getData(uid); //getData method for getting data from the blockchain
+    assert.equal(patientDeatails[0], uid, "uid test fail"); //Unique ID testing
+    assert.equal(patientDeatails[1], name1, "name test fail"); //Name data testing
+    assert.equal(patientDeatails[2], organ, "organ test fail");
+    assert.equal(patientDeatails[3], hospital, "hosp test fail");
+    assert.equal(patientDeatails[4], doctor, "doc test fail");
+    assert.equal(patientDeatails[5], slNo, "slNo test fail");
   
   });
 
