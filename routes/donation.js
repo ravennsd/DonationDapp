@@ -17,9 +17,9 @@ donationRouter.post('/get', function (req, res, next) {
       else {
         console.log("Donation is" +donationRecord);
         res.status(200).render('previousDRs', { dRecord: donationRecord })
-        .catch(_err => {
-          res.status(400).send("Unable to Read the Database");
-        });
+        // .catch(_err => {
+        //   res.status(400).send("Unable to Read the Database");
+        // });
       }
     }
   });
