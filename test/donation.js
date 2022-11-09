@@ -38,11 +38,11 @@ contract("Donation", function (/* accounts */) {
 
     /* Test data declaration */
     uid = 1011;
-    name1="Test";
-    organ= 0;
-    hospital="Test";
-    doctor="Test";
-    slNo="Test";
+    name1="This is a test";
+    organ="This is a test";
+    hospital="This is a test";
+    doctor="This is a test";
+    slNo="This is a test";
     
     // donationCount = 1;
 
