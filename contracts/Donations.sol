@@ -67,7 +67,6 @@ contract Donation {
         string name;
         string organ;
         string hospital;
-       
         string doctor;
         string slNo;
         

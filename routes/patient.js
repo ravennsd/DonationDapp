@@ -46,10 +46,10 @@ PatientRouter.post('/add', function (req, res, next) {
   }
 
   //Gender variable for contract
-  if (data.gender == 'Male') {
+  if (data.gender = 'Male') {
     sex = 0;
   }
-  else if (data.gender == 'Female') {
+  else if (data.gender = 'Female') {
     sex = 1;
   }
   else { sex = 2; }
@@ -102,17 +102,17 @@ PatientRouter.post('/add', function (req, res, next) {
                 console.log("Txn" +txn);
                 console.log(txn[3]);
                 
-            
-              if (txn[3] == 0){
+            let genr= txn[3];
+              if (genr == 0){
                  
-                 txn[3] = 'Male'
+                 txn[3] = "Male"
                 }
-              else if(txn[3] == 1){
+              else if(genr = 1){
                 
-                txn[3] = 'Female';
+                txn[3] = "Female";
               }
               else {
-                txn[3] = 'Others';
+                txn[3] = 'Otherss';
               }
           
           

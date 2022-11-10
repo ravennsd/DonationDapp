@@ -20,7 +20,8 @@ contract("Donation", function (/* accounts */) {
     name1 = "This is a test";
     age = 12;
     gender = 0;
-    location = "SandBox, Kerala , IND";
+    //location = "SandBox, Kerala , IND";
+    location = "This is a test";
     // patientCount = 1;
 
     await patient.setPatient(uid, name1, age, gender, location); //setPatient method for adding patient details to blockchain
@@ -43,17 +44,15 @@ contract("Donation", function (/* accounts */) {
     hospital="This is a test";
     doctor="This is a test";
     slNo="This is a test";
-    
-    // donationCount = 1;
 
     await donation.setDonationData(uid, name1, organ, hospital, doctor, slNo); //setDonationData method for adding Donation data to blockchain
     donationDetails = await donation.getData(uid); //getData method for getting data from the blockchain
     assert.equal(patientDeatails[0], uid, "uid test fail"); //Unique ID testing
     assert.equal(patientDeatails[1], name1, "name test fail"); //Name data testing
-    assert.equal(patientDeatails[2], organ, "organ test fail");
-    assert.equal(patientDeatails[3], hospital, "hosp test fail");
-    assert.equal(patientDeatails[4], doctor, "doc test fail");
-    assert.equal(patientDeatails[5], slNo, "slNo test fail");
+    assert.equal(patientDeatails[2], organ, "organ test fail"); //Organ data testing
+    assert.equal(patientDeatails[3], hospital, "hosp test fail");//Hospital data testing
+    assert.equal(patientDeatails[4], doctor, "doc test fail");//Doctor data testing
+    assert.equal(patientDeatails[5], slNo, "slNo test fail");//slNo data testing
   
   });
 

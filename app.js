@@ -6,31 +6,31 @@ const logger = require('morgan');
 Web3 = require("web3");
 
 // // web3 path
- const web3 = new Web3('http://localhost:8545');
-var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
-//const web3= new Web3(web3.currentProvider);
-const contractAddress = DonationJSON.networks['5777'].address;
-const contractAbi = DonationJSON.abi;
-DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
+//  const web3 = new Web3('http://localhost:8545');
+// var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+// ////const web3= new Web3(web3.currentProvider);
+// const contractAddress = DonationJSON.networks['5777'].address;
+// const contractAbi = DonationJSON.abi;
+// DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 
 // //Infura configduration
-// const infuraKey = "a89a3b1fa58841ae817fdd4944b78df6";
-// const HDWalletProvider = require('@truffle/hdwallet-provider');
-
-// const mnemonic = "interest later goose elite unusual galaxy claw display balance response angry beach";
-// const addressIndex = 0;
-// const numberofAddresses = 1;
-// const provider = new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/ec9e50d3250b4edc933024f314ec8b2f`, addressIndex, numberofAddresses);
+const infuraKey = "a89a3b1fa58841ae817fdd4944b78df6";
+const HDWalletProvider = require('@truffle/hdwallet-provider');
+var DonationJSON = require(path.join(__dirname, 'build/contracts/Donation.json'));
+const mnemonic = "interest later goose elite unusual galaxy claw display balance response angry beach";
+const addressIndex = 0;
+const numberofAddresses = 1;
+const provider = new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/ec9e50d3250b4edc933024f314ec8b2f`, addressIndex, numberofAddresses);
 
 
 web3 = new Web3(provider);
 
 accountAddress= "0x958c266da218BADd303d6f6b91f4d67A12930117";
-// contractAddress = DonationJSON.networks['5'].address;
+contractAddress = DonationJSON.networks['5'].address;
 
-// const contractAbi = DonationJSON.abi;
-// DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
+const contractAbi = DonationJSON.abi;
+DonationContract = new web3.eth.Contract(contractAbi, contractAddress);
 
 // routers
 const indexRouter = require('./routes/index');
