@@ -80,7 +80,6 @@ contract Donation {
     function setDonationData(
         uint256 _uid,
         string memory _name,
-        
         string memory _organ,
         string memory _hospital,
         string memory _doctor,
@@ -110,7 +109,6 @@ contract Donation {
             dData[_uid].name,
             dData[_uid].organ,
             dData[_uid].hospital,
-           
             dData[_uid].doctor,
             dData[_uid].slNo
         );
